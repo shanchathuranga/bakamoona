@@ -4,9 +4,9 @@
 #include <my_global.h>
 #include <mysql.h>
 
-    #define NO_RESULT 100
-#define SUCCESS 101
-#define MULTIPLE_RESULT 102
+#define NO_RESULT        100
+#define SUCCESS          101
+#define MULTIPLE_RESULT  102
 
 static MYSQL * conn = NULL;
 
