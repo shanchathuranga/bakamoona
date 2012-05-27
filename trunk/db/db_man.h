@@ -35,7 +35,7 @@
 	PRIMARY KEY (owner_id) \
 );"
 
-#define BKM_CREATE_QUERY_UNREGISTEREDJOBDETAILS "CREATE TABLE UnregistredJobDetails ( \
+#define BKM_CREATE_QUERY_UNREGISTEREDJOBDETAILS "CREATE TABLE IF NOT EXISTS UnregistredJobDetails ( \
 	unreg_jobdetail_id INT NOT NULL AUTO_INCREMENT, \
 	bus_reg_no VARCHAR (8), \
 	bus_model VARCHAR (64), \

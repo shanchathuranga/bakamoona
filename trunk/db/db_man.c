@@ -35,7 +35,7 @@ void bakamoona_init_db ()
 	}
 
 	if (mysql_query(conn, BKM_CREATE_QUERY_UNREGISTEREDJOBDETAILS)) {
-		printf("ERROR : bakamoona create BKM_CREATE_QUERY_OWNER error\n");
+		printf("ERROR : bakamoona create BKM_CREATE_QUERY_UNREGISTEREDJOBDETAILS error\n");
 		exit(1);
 	}
 }
