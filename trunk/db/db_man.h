@@ -48,7 +48,7 @@
 	PRIMARY KEY (unreg_jobdetail_id) \
 );"
 
-static MYSQL * conn = NULL;
+MYSQL * conn;
 
 void bakamoona_wakeup ( const char * url, const char * username, const char * password);
 void bakamoona_init_db ();

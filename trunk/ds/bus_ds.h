@@ -5,8 +5,9 @@ typedef struct bus
 {
 	int bus_id;
 	int owner_id;
-	char bus_reg_no[8];
+	char bus_reg_no[10];
 	char bus_model[64];
+	char ts[64];
 	int error;
 } BUS;
 

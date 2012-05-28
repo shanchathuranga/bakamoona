@@ -1,8 +1,10 @@
-CC = gcc
+CC = gcc -g
 PROGRAM = bakamoona
-CFLAGS = -I./db
+CFLAGS = -I./db -I./ds
 
-SOURCES = 	./db/db_man.c
+SOURCES = 	./db/db_man.c \
+			./db/bus.c \
+			./ds/bus_ds.c
 
 .PHONY: all
 all:
