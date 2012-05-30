@@ -1,6 +1,13 @@
 #include <stdio.h>
 
-int main(){
+struct Vehicle 
+{
+	int engineCapacity;
+	int numGears;
+	char fuelType[20];
+};
 
-return 0;
+int main()
+{
+	return 0;
 }
