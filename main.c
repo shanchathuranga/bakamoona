@@ -15,5 +15,8 @@ int main()
 
 	delete_bus (bus);
 
+	BUSLIST * list = get_bus_by_owner_id (23201);
+	debug_bus_list (list);
+
 	return 0;
 }
