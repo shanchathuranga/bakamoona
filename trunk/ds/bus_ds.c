@@ -48,7 +48,7 @@ static void recursive_delete (BUSLIST * list)
         free (list);
 }
 
-void delete_bus (BUS * bus)
+void remove_bus (BUS * bus)
 {
 	if (bus == NULL)
 		return;
