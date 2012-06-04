@@ -2,10 +2,18 @@
 #include <string.h>
 #include <stdlib.h>
 #include "bus.h"
+#include "mainwin.h"
 
-int main()
+int main(int argc, char *argv[])
 {
 	printf ("starting ........ \n");
+	
+	gtk_init (&argc, &argv);
+	open_mainwindow ();
+	gtk_main ();
+
+	init_db ();
+
 	BUS * bus = get_bus_by_id (3);
 
 	printf ("bus_id = %d\n", bus->bus_id);
