@@ -15,4 +15,9 @@ GtkWidget * add_owner;
 GtkWidget * add_sparepart;
 GtkWidget * quit;
 
+GtkWidget * toolbar;
+GtkToolItem * new_tool;
+GtkToolItem * open_tool;
+GtkToolItem * save_tool;
+
 #endif
