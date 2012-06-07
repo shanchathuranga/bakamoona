@@ -24,11 +24,18 @@
 );"
 
 #define BKM_QUERY_OWNER "CREATE TABLE IF NOT EXISTS Owner ( \
-	owner_id INT NOT NULL AUTO_INCREMENT, \
-	owner_name VARCHAR (128), \
-	company_name VARCHAR (64), \
-	ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, \
-	PRIMARY KEY (owner_id) \
+  owner_id INT (10) NOT NULL AUTO_INCREMENT PRIMARY KEY, \
+  owner_name VARCHAR (100), \
+  owner_reg_no INT (10), \
+  phone1 INT (10), \
+  phone2 INT (10), \
+  phone3 INT (10), \
+  address1 VARCHAR (200), \
+  city1 VARCHAR (50), \
+  address2 VARCHAR (200), \
+  city2 VARCHAR (50), \
+  email VARCHAR (50), \
+  PRIMARY KEY (owner_id) \
 );"
 
 #define BKM_QUERY_UNREGISTEREDJOBDETAILS "CREATE TABLE IF NOT EXISTS UnregistredJobDetails ( \
