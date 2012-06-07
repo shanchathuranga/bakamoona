@@ -1,5 +1,45 @@
 #include "mainwin.h"
 
+void add_bus_clicked (GtkWidget * widget, gpointer data)
+{
+	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(w), GTK_WIN_POS_CENTER);
+  	gtk_window_set_default_size(GTK_WINDOW(w), 300, 100);
+	gtk_widget_show_all (w);
+	g_signal_connect_swapped(G_OBJECT(w), "destroy",
+        G_CALLBACK(gtk_widget_destroy), NULL);
+}
+
+void add_owner_clicked (GtkWidget * widget, gpointer data)
+{
+	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(w), GTK_WIN_POS_CENTER);
+  	gtk_window_set_default_size(GTK_WINDOW(w), 300, 100);
+	gtk_widget_show_all (w);
+	g_signal_connect_swapped(G_OBJECT(w), "destroy",
+        G_CALLBACK(gtk_widget_destroy), NULL);
+}
+
+void add_sparepart_clicked (GtkWidget * widget, gpointer data)
+{
+	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(w), GTK_WIN_POS_CENTER);
+  	gtk_window_set_default_size(GTK_WINDOW(w), 300, 100);
+	gtk_widget_show_all (w);
+	g_signal_connect_swapped(G_OBJECT(w), "destroy",
+        G_CALLBACK(gtk_widget_destroy), NULL);
+}
+
+void quit_clicked (GtkWidget * widget, gpointer data)
+{
+	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(w), GTK_WIN_POS_CENTER);
+  	gtk_window_set_default_size(GTK_WINDOW(w), 300, 100);
+	gtk_widget_show_all (w);
+	g_signal_connect_swapped(G_OBJECT(w), "destroy",
+        G_CALLBACK(gtk_widget_destroy), NULL);
+}
+
 void open_mainwindow ()
 {
 	mainwin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -30,6 +70,12 @@ void open_mainwindow ()
 	g_signal_connect_swapped(G_OBJECT(mainwin), "destroy",
         G_CALLBACK(gtk_main_quit), NULL);
 
+	g_signal_connect(G_OBJECT(add_bus), "activate",
+        G_CALLBACK(add_bus_clicked), NULL);
+	g_signal_connect(G_OBJECT(add_owner), "activate",
+        G_CALLBACK(add_owner_clicked), NULL);
+	g_signal_connect(G_OBJECT(add_sparepart), "activate",
+        G_CALLBACK(add_sparepart_clicked), NULL);
   	g_signal_connect(G_OBJECT(quit), "activate",
         G_CALLBACK(gtk_main_quit), NULL);
 
