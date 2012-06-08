@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "bus.h"
+#include "owner.h"
 #include "mainwin.h"
 
 int main(int argc, char *argv[])
@@ -41,6 +42,38 @@ int main(int argc, char *argv[])
 	remove_bus (b1);
 
 	delete_bus_by_id (16);
+
+	OWNER * owner = get_owner_by_id (1);
+
+	if (!owner)
+		printf ("owner null\n");
+	
+	printf ("owner_id = %d\n", owner->owner_id);
+	printf ("owner_reg_no = %s\n", owner->owner_reg_no);
+	printf ("owner_name = %s\n", owner->owner_name);
+	printf ("phone1 = %s\n", owner->phone1);
+	printf ("phone2 = %s\n", owner->phone2);
+	printf ("phone3 = %s\n", owner->phone3);
+	printf ("address1 = %s\n", owner->address1);
+	printf ("city1 = %s\n", owner->city1);
+	printf ("address2 = %s\n", owner->address2);
+	printf ("city2 = %s\n", owner->city2);
+	printf ("email = %s\n", owner->email);
+
+	OWNER * ow = malloc (sizeof(OWNER));
+
+	strcpy (ow->owner_name, "Kamal");
+	strcpy (ow->owner_reg_no, "RH-89-0003-332");
+	strcpy (ow->phone1, "0772922992");
+	strcpy (ow->phone2, "");
+	strcpy (ow->phone3, "");
+	strcpy (ow->address1, "3/1, sarana mawatha, didheniya");
+	strcpy (ow->city1, "Nugegoda");
+	strcpy (ow->address2, "");
+	strcpy (ow->city2, "");
+	strcpy (ow->email, "slls@fix.com");
+
+	insert_owner (ow);
 
 	return 0;
 }
