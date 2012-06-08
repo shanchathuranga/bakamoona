@@ -7,7 +7,8 @@ CFLAGS = -I./db -I./ds -I./gui
 SOURCES = 	./db/bus.c \
 			./ds/bus_ds.c \
 			./db/db.c \
-			./gui/mainwin.c
+			./gui/mainwin.c \
+         ./gui/owner_reg.c
 
 .PHONY: all
 all:
