@@ -33,12 +33,26 @@ void quit_clicked (GtkWidget * widget, gpointer data)
 	gtk_main_quit ();
 }
 
+GdkPixbuf *create_pixbuf(const gchar * filename)
+{
+   GdkPixbuf *pixbuf;
+   GError *error = NULL;
+   pixbuf = gdk_pixbuf_new_from_file(filename, &error);
+   if(!pixbuf) {
+      fprintf(stderr, "%s\n", error->message);
+      g_error_free(error);
+   }
+
+   return pixbuf;
+}
+
 void open_mainwindow ()
 {
 	mainwin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_position(GTK_WINDOW(mainwin), GTK_WIN_POS_CENTER);
   	gtk_window_set_default_size(GTK_WINDOW(mainwin), 250, 200);
-  	gtk_window_set_title(GTK_WINDOW(mainwin), "StockCycle v 0.1");
+  	gtk_window_set_title(GTK_WINDOW(mainwin), "Bakamoona v 0.1");
+	gtk_window_set_icon(GTK_WINDOW(mainwin), create_pixbuf("images/bkm.png"));
 
 	layout = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (mainwin), layout);

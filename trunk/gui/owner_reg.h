@@ -9,7 +9,7 @@ GtkWidget * vbox;
 GtkWidget * hbox;
 GtkWidget * hspace;
 GtkWidget * table;
-GtkWidget * sep;
+GtkWidget * clear;
 GtkWidget * ok;
 GtkWidget * cancel;
 GtkWidget * lname, * tname;
