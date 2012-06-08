@@ -3,15 +3,21 @@
 GtkWidget * create_owner_reg_window ()
 {
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+	gtk_window_set_title(GTK_WINDOW(window), "Owner Registration");
+	gtk_window_set_default_size(GTK_WINDOW(window), 500, 350);
     gtk_container_set_border_width(GTK_CONTAINER(window), 10);
 
-    GtkWidget * vbox = gtk_vbox_new(FALSE, 5);
+    vbox = gtk_vbox_new(FALSE, 5);
     gtk_container_add(GTK_CONTAINER(window), vbox);
+	gtk_box_set_spacing (GTK_BOX(vbox), 5);
 
     title = gtk_label_new ("Owner Registration");
     gtk_box_pack_start(GTK_BOX(vbox), title, FALSE, FALSE, 0);
 
     table = gtk_table_new (8, 2, FALSE);
+	gtk_table_set_row_spacings(GTK_TABLE(table), 5);
+ 	gtk_table_set_col_spacings(GTK_TABLE(table), 5);
 
     lname = gtk_label_new ("Name : ");
     lregno = gtk_label_new ("NIC / Reg No : ");
@@ -61,20 +67,21 @@ GtkWidget * create_owner_reg_window ()
     gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
         
     hbox = gtk_hbox_new (FALSE, 5);
-    ok = gtk_button_new_with_label("OK");
-    cancel = gtk_button_new_with_label("Cancel");
-    gtk_box_pack_start(GTK_BOX(hbox), ok, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(hbox), cancel, FALSE, FALSE, 0);
+    clear = gtk_button_new_with_label ("Clear");
+	gtk_widget_set_size_request (clear, 100, 30);
+	ok = gtk_button_new_with_label ("OK");
+	gtk_widget_set_size_request (ok, 100, 30);
+    cancel = gtk_button_new_with_label ("Cancel");
+	gtk_widget_set_size_request (cancel, 100, 30);
 
-    hspace = gtk_alignment_new (1, 0, 0, 0);
-    gtk_container_add (GTK_CONTAINER(hspace), hbox);
-    gtk_box_pack_end(GTK_BOX(vbox), hspace, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), clear, FALSE, FALSE, 0);
+    gtk_box_pack_end(GTK_BOX(hbox), cancel, FALSE, FALSE, 0);
+    gtk_box_pack_end(GTK_BOX(hbox), ok, FALSE, FALSE, 0);
 
-    sep = gtk_hseparator_new ();
-    gtk_box_pack_end(GTK_BOX(vbox), sep, FALSE, FALSE, 0);
-    
+    gtk_box_pack_end(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+
     g_signal_connect_swapped (G_OBJECT(window), "destroy",
-        G_CALLBACK(gtk_main_quit), G_OBJECT(window));
+        G_CALLBACK(gtk_widget_destroy), G_OBJECT(window));
     
     gtk_widget_show_all (window);
     
