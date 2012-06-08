@@ -21,4 +21,6 @@ GtkWidget * lcity1, * tcity1;
 GtkWidget * laddress2, * taddress2;
 GtkWidget * lcity2, * tcity2; 
 
+GtkWidget * create_owner_reg_window ();
+
 #endif
