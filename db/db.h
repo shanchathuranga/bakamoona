@@ -29,7 +29,6 @@
   	owner_reg_no VARCHAR (64), \
   	phone1 VARCHAR (10), \
   	phone2 VARCHAR (10), \
-  	phone3 VARCHAR (10), \
   	address1 VARCHAR (255), \
   	city1 VARCHAR (64), \
   	address2 VARCHAR (255), \

@@ -10,7 +10,8 @@ SOURCES = 	./db/bus.c \
 			./gui/mainwin.c \
          	./gui/owner_reg.c \
 			./db/owner.c \
-			./ds/owner_ds.c
+			./ds/owner_ds.c \
+			./gui/bus_reg.c
 
 .PHONY: all
 all:
