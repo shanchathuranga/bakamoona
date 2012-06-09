@@ -53,7 +53,6 @@ int main(int argc, char *argv[])
 	printf ("owner_name = %s\n", owner->owner_name);
 	printf ("phone1 = %s\n", owner->phone1);
 	printf ("phone2 = %s\n", owner->phone2);
-	printf ("phone3 = %s\n", owner->phone3);
 	printf ("address1 = %s\n", owner->address1);
 	printf ("city1 = %s\n", owner->city1);
 	printf ("address2 = %s\n", owner->address2);
@@ -66,7 +65,6 @@ int main(int argc, char *argv[])
 	strcpy (ow->owner_reg_no, "RH-89-0003-332");
 	strcpy (ow->phone1, "0772922992");
 	strcpy (ow->phone2, "");
-	strcpy (ow->phone3, "");
 	strcpy (ow->address1, "3/1, sarana mawatha, didheniya");
 	strcpy (ow->city1, "Nugegoda");
 	strcpy (ow->address2, "");

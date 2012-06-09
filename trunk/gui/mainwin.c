@@ -1,15 +1,18 @@
 #include "mainwin.h"
 #include "owner_reg.h"
+#include "bus_reg.h"
 
 void add_bus_clicked (GtkWidget * widget, gpointer data)
 {
-	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	/*GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_position(GTK_WINDOW(w), GTK_WIN_POS_CENTER);
 	gtk_window_set_title(GTK_WINDOW(w), "Bus Registration");
   	gtk_window_set_default_size(GTK_WINDOW(w), 300, 100);
 	gtk_widget_show_all (w);
 	g_signal_connect_swapped(G_OBJECT(w), "destroy",
-        G_CALLBACK(gtk_widget_destroy), NULL);
+        G_CALLBACK(gtk_widget_destroy), NULL);*/
+
+	create_bus_reg_window ();
 }
 
 void add_owner_clicked (GtkWidget * widget, gpointer data)

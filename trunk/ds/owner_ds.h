@@ -8,7 +8,6 @@ typedef struct owner
 	char owner_reg_no[64]; 
 	char phone1[32];
 	char phone2[32]; 
-	char phone3[32];
 	char address1[255];
 	char city1[64];
 	char address2[255];
