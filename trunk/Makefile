@@ -4,14 +4,14 @@ CC = gcc -g
 PROGRAM = bakamoona
 CFLAGS = -I./db -I./ds -I./gui
 
-SOURCES = 	./db/bus.c \
-			./ds/bus_ds.c \
-			./db/db.c \
-			./gui/mainwin.c \
-         	./gui/owner_reg.c \
-			./db/owner.c \
+SOURCES = 	./ds/bus_ds.c \
 			./ds/owner_ds.c \
-			./gui/bus_reg.c
+			./db/db.c \
+			./db/bus.c \
+			./db/owner.c \
+			./gui/mainwin_ui.c \
+         	./gui/owner_reg_ui.c \
+			./gui/bus_reg_ui.c
 
 .PHONY: all
 all:

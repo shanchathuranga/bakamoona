@@ -1,5 +1,5 @@
-#ifndef _OWNER_REG_H_
-#define _OWNER_REG_H_
+#ifndef _OWNER_REG_UI_H_
+#define _OWNER_REG_UI_H_
 
 #include <gtk/gtk.h>
 

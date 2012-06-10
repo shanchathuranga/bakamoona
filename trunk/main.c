@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "bus.h"
 #include "owner.h"
-#include "mainwin.h"
+#include "mainwin_ui.h"
 
 int main(int argc, char *argv[])
 {
