@@ -1,6 +1,6 @@
-#include "mainwin.h"
-#include "owner_reg.h"
-#include "bus_reg.h"
+#include "mainwin_ui.h"
+#include "owner_reg_ui.h"
+#include "bus_reg_ui.h"
 
 void add_bus_clicked (GtkWidget * widget, gpointer data)
 {
@@ -65,6 +65,9 @@ void open_mainwindow ()
 
 	add = gtk_menu_item_new_with_label("Add");
 	add_bus = gtk_menu_item_new_with_label ("Add Bus");
+	//add_bus = gtk_image_menu_item_new_with_label ("Add Bus");
+	//gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(add_bus), gtk_image_new_from_file("images/add_bus.png"));
+	//gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM(add_bus), TRUE);
 	add_owner = gtk_menu_item_new_with_label ("Add Owner");
 	add_sparepart = gtk_menu_item_new_with_label ("Add Spare part");
  	quit = gtk_menu_item_new_with_label("Quit");
@@ -81,16 +84,19 @@ void open_mainwindow ()
  	gtk_toolbar_set_style(GTK_TOOLBAR(toolbar), GTK_TOOLBAR_ICONS);
 	gtk_container_set_border_width(GTK_CONTAINER(toolbar), 0);
 
+	quit_tool = gtk_tool_button_new_from_stock (GTK_STOCK_QUIT);
+	gtk_toolbar_insert (GTK_TOOLBAR(toolbar), quit_tool, -1);
+
 	new_tool = gtk_tool_button_new_from_stock(GTK_STOCK_NEW);
-  	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), new_tool, -1);
+  	gtk_toolbar_insert (GTK_TOOLBAR(toolbar), new_tool, -1);
 
 	open_tool = gtk_tool_button_new_from_stock(GTK_STOCK_OPEN);
-  	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), open_tool, -1);
+  	gtk_toolbar_insert (GTK_TOOLBAR(toolbar), open_tool, -1);
 
 	save_tool = gtk_tool_button_new_from_stock(GTK_STOCK_SAVE);
-  	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), save_tool, -1);
+  	gtk_toolbar_insert (GTK_TOOLBAR(toolbar), save_tool, -1);
 
-	gtk_box_pack_start(GTK_BOX(layout), toolbar, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX(layout), toolbar, FALSE, FALSE, 0);
 
 	g_signal_connect_swapped(G_OBJECT(mainwin), "destroy",
         G_CALLBACK(gtk_main_quit), NULL);

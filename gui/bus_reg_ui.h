@@ -1,5 +1,5 @@
-#ifndef _BUS_REG_H_
-#define _BUS_REG_H_
+#ifndef _BUS_REG_UI_H_
+#define _BUS_REG_UI_H_
 
 #include <gtk/gtk.h>
 

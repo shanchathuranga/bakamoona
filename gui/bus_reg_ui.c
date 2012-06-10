@@ -1,4 +1,4 @@
-#include "bus_reg.h"
+#include "bus_reg_ui.h"
 #include "bus_ds.h"
 #include <stdlib.h>
 #include <string.h>

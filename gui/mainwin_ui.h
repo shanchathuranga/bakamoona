@@ -1,5 +1,5 @@
-#ifndef _MAINWIN_H_
-#define _MAINWIN_H_
+#ifndef _MAINWIN_UI_H_
+#define _MAINWIN_UI_H_
 
 #include <gtk/gtk.h>
 
@@ -16,6 +16,7 @@ GtkWidget * add_sparepart;
 GtkWidget * quit;
 
 GtkWidget * toolbar;
+GtkToolItem * quit_tool;
 GtkToolItem * new_tool;
 GtkToolItem * open_tool;
 GtkToolItem * save_tool;
