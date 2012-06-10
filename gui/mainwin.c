@@ -75,11 +75,11 @@ void open_mainwindow ()
 	gtk_menu_shell_append (GTK_MENU_SHELL(addmenu), add_sparepart);
   	gtk_menu_shell_append (GTK_MENU_SHELL(addmenu), quit);
   	gtk_menu_shell_append (GTK_MENU_SHELL(menubar), add);
-  	gtk_box_pack_start (GTK_BOX(layout), menubar, FALSE, FALSE, 3);
+  	gtk_box_pack_start (GTK_BOX(layout), menubar, FALSE, FALSE, 0);
 
 	toolbar = gtk_toolbar_new();
  	gtk_toolbar_set_style(GTK_TOOLBAR(toolbar), GTK_TOOLBAR_ICONS);
-	gtk_container_set_border_width(GTK_CONTAINER(toolbar), 2);
+	gtk_container_set_border_width(GTK_CONTAINER(toolbar), 0);
 
 	new_tool = gtk_tool_button_new_from_stock(GTK_STOCK_NEW);
   	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), new_tool, -1);
@@ -90,7 +90,7 @@ void open_mainwindow ()
 	save_tool = gtk_tool_button_new_from_stock(GTK_STOCK_SAVE);
   	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), save_tool, -1);
 
-	gtk_box_pack_start(GTK_BOX(layout), toolbar, FALSE, FALSE, 3);
+	gtk_box_pack_start(GTK_BOX(layout), toolbar, FALSE, FALSE, 0);
 
 	g_signal_connect_swapped(G_OBJECT(mainwin), "destroy",
         G_CALLBACK(gtk_main_quit), NULL);
