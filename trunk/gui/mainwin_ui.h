@@ -6,12 +6,34 @@
 GtkWidget * mainwin;
 GtkWidget * layout;
 GtkWidget * menubar;
-GtkWidget * addmenu;
+// System menu
+GtkWidget * sysmenu;
+GtkWidget * sys_menu_item;
+// bus
+GtkWidget * bus_item;
+GtkWidget * busmenu;
+GtkWidget * addbus;
+GtkWidget * updatebus;
+GtkWidget * deletebus;
+// owner
+GtkWidget * owner_item;
+GtkWidget * ownermenu;
+GtkWidget * addowner;
+GtkWidget * updateowner;
+GtkWidget * deleteowner;
+// sparepart
+GtkWidget * sp_item;
+GtkWidget * spmenu;
+GtkWidget * addsp;
+GtkWidget * updatesp;
+GtkWidget * deletesp;
+// worker
+GtkWidget * worker_item;
+GtkWidget * workermenu;
+GtkWidget * addworker;
+GtkWidget * updateworker;
+GtkWidget * deleteworker;
 
-// Add menu
-GtkWidget * add;
-GtkWidget * add_bus;
-GtkWidget * add_owner;
 GtkWidget * add_sparepart;
 GtkWidget * quit;
 
