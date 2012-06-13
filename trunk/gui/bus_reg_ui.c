@@ -152,6 +152,8 @@ bus_ui * create_bus_reg_window ()
 	g_signal_connect (G_OBJECT(bui->cancel), "clicked",
 		G_CALLBACK(cancel_button_clicked), G_OBJECT(bui->window));
 
+	gtk_window_set_modal (GTK_WINDOW(bui->window), TRUE);
+
 	gtk_widget_show_all (bui->window);
 	
 	return bui;
