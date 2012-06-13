@@ -8,12 +8,14 @@
 int main(int argc, char *argv[])
 {
 	printf ("starting ........ \n");
+   
+  init_db ();
 	
 	gtk_init (&argc, &argv);
 	open_mainwindow ();
 	gtk_main ();
 
-	init_db ();
+	//init_db ();
 
 	BUS * bus = get_bus_by_id (3);
 
