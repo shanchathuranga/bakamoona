@@ -61,23 +61,85 @@ void open_mainwindow ()
 	gtk_container_add (GTK_CONTAINER (mainwin), layout);
 
 	menubar = gtk_menu_bar_new ();
-	addmenu = gtk_menu_new ();
 
-	add = gtk_menu_item_new_with_label("Add");
-	add_bus = gtk_menu_item_new_with_label ("Add Bus");
-	//add_bus = gtk_image_menu_item_new_with_label ("Add Bus");
-	//gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM(add_bus), gtk_image_new_from_file("images/add_bus.png"));
-	//gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM(add_bus), TRUE);
-	add_owner = gtk_menu_item_new_with_label ("Add Owner");
+// start
+    sysmenu = gtk_menu_new();
+    sys_menu_item = gtk_menu_item_new_with_label ("System");
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(sys_menu_item), sysmenu);
+
+    // adding bus
+    bus_item = gtk_menu_item_new_with_label ("Bus");
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), bus_item);
+
+    busmenu = gtk_menu_new ();
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(bus_item), busmenu);
+
+    addbus = gtk_menu_item_new_with_label ("Add Bus");
+    updatebus = gtk_menu_item_new_with_label ("Update Bus");
+    deletebus = gtk_menu_item_new_with_label ("Delete Bus");
+
+    gtk_menu_shell_append (GTK_MENU_SHELL(busmenu), addbus);
+    gtk_menu_shell_append (GTK_MENU_SHELL(busmenu), updatebus);
+    gtk_menu_shell_append (GTK_MENU_SHELL(busmenu), deletebus);
+
+    // adding owner
+    owner_item = gtk_menu_item_new_with_label ("Owner");
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), owner_item);
+
+    ownermenu = gtk_menu_new ();
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(owner_item), ownermenu);
+
+    addowner = gtk_menu_item_new_with_label ("Add Owner");
+    updateowner = gtk_menu_item_new_with_label ("Update Owner");
+    deleteowner = gtk_menu_item_new_with_label ("Delete Owner");
+
+    gtk_menu_shell_append (GTK_MENU_SHELL(ownermenu), addowner);
+    gtk_menu_shell_append (GTK_MENU_SHELL(ownermenu), updateowner);
+    gtk_menu_shell_append (GTK_MENU_SHELL(ownermenu), deleteowner);
+
+    // adding sparepart 
+    sp_item = gtk_menu_item_new_with_label ("Spare Part");
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), sp_item);
+
+    spmenu = gtk_menu_new ();
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(sp_item), spmenu);
+
+    addsp = gtk_menu_item_new_with_label ("Add Spare Part");
+    updatesp = gtk_menu_item_new_with_label ("Update Spare Part");
+    deletesp = gtk_menu_item_new_with_label ("Delete Spare Part");
+
+    gtk_menu_shell_append (GTK_MENU_SHELL(spmenu), addsp);
+    gtk_menu_shell_append (GTK_MENU_SHELL(spmenu), updatesp);
+    gtk_menu_shell_append (GTK_MENU_SHELL(spmenu), deletesp);
+    
+    // adding worker
+    worker_item = gtk_menu_item_new_with_label ("Worker");
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), worker_item);
+
+    workermenu = gtk_menu_new ();
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(worker_item), workermenu);
+
+    addworker = gtk_menu_item_new_with_label ("Add Worker");
+    updateworker = gtk_menu_item_new_with_label ("Update Worker");
+    deleteworker = gtk_menu_item_new_with_label ("Delete Worker");
+
+    gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), addworker);
+    gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), updateworker);
+    gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), deleteworker);
+    
+    add_sparepart = gtk_menu_item_new_with_label ("Add Spare part");
+    quit = gtk_menu_item_new_with_label("Quit");
+
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), add_sparepart);
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), quit);
+        
+    gtk_menu_shell_append (GTK_MENU_SHELL(menubar), sys_menu_item);
+    
+// end
+
 	add_sparepart = gtk_menu_item_new_with_label ("Add Spare part");
  	quit = gtk_menu_item_new_with_label("Quit");
 
-	gtk_menu_item_set_submenu (GTK_MENU_ITEM(add), addmenu);
-	gtk_menu_shell_append (GTK_MENU_SHELL(addmenu), add_bus);
-	gtk_menu_shell_append (GTK_MENU_SHELL(addmenu), add_owner);
-	gtk_menu_shell_append (GTK_MENU_SHELL(addmenu), add_sparepart);
-  	gtk_menu_shell_append (GTK_MENU_SHELL(addmenu), quit);
-  	gtk_menu_shell_append (GTK_MENU_SHELL(menubar), add);
   	gtk_box_pack_start (GTK_BOX(layout), menubar, FALSE, FALSE, 0);
 
 	toolbar = gtk_toolbar_new();
@@ -101,11 +163,11 @@ void open_mainwindow ()
 	g_signal_connect_swapped(G_OBJECT(mainwin), "destroy",
         G_CALLBACK(gtk_main_quit), NULL);
 
-	g_signal_connect(G_OBJECT(add_bus), "activate",
+	g_signal_connect(G_OBJECT(addbus), "activate",
         G_CALLBACK(add_bus_clicked), NULL);
-	g_signal_connect(G_OBJECT(add_owner), "activate",
+	g_signal_connect(G_OBJECT(addowner), "activate",
         G_CALLBACK(add_owner_clicked), NULL);
-	g_signal_connect(G_OBJECT(add_sparepart), "activate",
+	g_signal_connect(G_OBJECT(addsp), "activate",
         G_CALLBACK(add_sparepart_clicked), NULL);
   	g_signal_connect(G_OBJECT(quit), "activate",
         G_CALLBACK(gtk_main_quit), NULL);
