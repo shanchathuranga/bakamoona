@@ -101,7 +101,9 @@ worker_ui * create_worker_reg_window ()
 
 	////////////////////
 	g_signal_connect_swapped(G_OBJECT(wrkui->window), "destroy",
-			G_CALLBACK(gtk_main_quit), G_OBJECT(wrkui->window));
+			G_CALLBACK(gtk_widget_destroy), G_OBJECT(wrkui->window));
+
+	gtk_window_set_modal (GTK_WINDOW(wrkui->window), TRUE);
 
 	gtk_widget_show_all(wrkui->window);
 

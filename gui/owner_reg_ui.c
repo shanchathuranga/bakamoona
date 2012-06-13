@@ -143,6 +143,8 @@ owner_ui * create_owner_reg_window ()
 	g_signal_connect (G_OBJECT(ownui->cancel), "clicked",
 		G_CALLBACK(cancel_button_clicked), G_OBJECT(ownui->window));
     
+	gtk_window_set_modal (GTK_WINDOW(ownui->window), TRUE);
+
     gtk_widget_show_all (ownui->window);
     
     return ownui;
