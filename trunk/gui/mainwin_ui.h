@@ -34,7 +34,7 @@ GtkWidget * addworker;
 GtkWidget * updateworker;
 GtkWidget * deleteworker;
 
-GtkWidget * add_sparepart;
+GtkWidget * sep;
 GtkWidget * quit;
 
 GtkWidget * toolbar;
