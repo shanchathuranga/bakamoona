@@ -134,19 +134,16 @@ void open_mainwindow ()
     gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), addworker);
     gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), updateworker);
     gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), deleteworker);
-    
-    add_sparepart = gtk_menu_item_new_with_label ("Add Spare part");
+
+	sep = gtk_separator_menu_item_new();
     quit = gtk_menu_item_new_with_label("Quit");
 
-    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), add_sparepart);
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), sep);
     gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), quit);
         
     gtk_menu_shell_append (GTK_MENU_SHELL(menubar), sys_menu_item);
     
 // end
-
-	add_sparepart = gtk_menu_item_new_with_label ("Add Spare part");
- 	quit = gtk_menu_item_new_with_label("Quit");
 
   	gtk_box_pack_start (GTK_BOX(layout), menubar, FALSE, FALSE, 0);
 
