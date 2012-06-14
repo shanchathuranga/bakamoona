@@ -16,7 +16,7 @@ SOURCES = 	./ds/bus_ds.c \
 
 .PHONY: all
 all:
-	$(CC) -o $(PROGRAM) main.c $(SOURCES) $(CFLAGS) `mysql_config --cflags --libs` `pkg-config --libs --cflags gtk+-2.0`
+	$(CC) -o $(PROGRAM) main.c $(SOURCES) $(CFLAGS) `mysql_config --cflags --libs` `pkg-config --libs --cflags gtk+-2.0` `pkg-config --cflags --libs glib-2.0`
 
 .PHONY: clean
 clean:
