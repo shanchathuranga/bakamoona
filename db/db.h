@@ -17,8 +17,11 @@
 #define BKM_QUERY_BUS "CREATE TABLE IF NOT EXISTS Bus ( \
 	bus_id INT NOT NULL AUTO_INCREMENT, \
 	owner_id INT NOT NULL, \
-	bus_reg_no VARCHAR (8), \
+	bus_reg_no VARCHAR (20), \
+	bus_eng_no VARCHAR (64), \
+	bus_chs_no VARCHAR (64), \
 	bus_model VARCHAR (64), \
+	deleted INT, \
 	ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, \
 	PRIMARY KEY (bus_id) \
 );"
