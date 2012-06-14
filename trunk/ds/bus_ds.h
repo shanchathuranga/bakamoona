@@ -21,7 +21,7 @@ typedef BUSLIST BUSNODE;
 BUSLIST * make_bus_list();
 void add_bus_to_list (BUSLIST * list, BUS * bus);
 BUSLIST * delete_bus_list (BUSLIST * list);
-static void recursive_delete (BUSLIST * list);
+static void recursive_bus_delete (BUSLIST * list);
 void delete_bus (BUS * bus);
 void debug_bus_list (BUSLIST * list);
 
