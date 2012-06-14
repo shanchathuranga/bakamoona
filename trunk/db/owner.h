@@ -7,6 +7,7 @@
 OWNER * get_owner_by_id (int owner_id);
 OWNER * get_owner_by_reg_no (char * owner_reg_no);
 OWNERLIST * get_owner_by_owner_name (char * owner_name);
+OWNERLIST * get_all_owners ();
 
 // insert
 void insert_owner (OWNER * owner);
