@@ -23,7 +23,7 @@ BUS * get_bus_by_id (int bus_id)
 
 	if (mysql_num_rows (result) != 1)
 	{
-		printf ("row count should be ONE");
+		printf ("row count should be ONE\n");
 		return NULL;
 	}
 
@@ -73,7 +73,7 @@ BUS * get_bus_by_id (int bus_id)
 			}
 		}
 	}
-	
+
 	mysql_free_result (result);
 	mysql_close (conn);
 
@@ -99,7 +99,7 @@ BUS * get_bus_by_reg_no (char * bus_reg_no)
 
 	if (mysql_num_rows (result) != 1)
 	{
-		printf ("row count should be ONE");
+		printf ("row count should be ONE\n");
 		return NULL;
 	}
 
@@ -111,7 +111,7 @@ BUS * get_bus_by_reg_no (char * bus_reg_no)
 	while((row = mysql_fetch_row(result))) 
 	{
 		unsigned long * lengths = mysql_fetch_lengths(result);
-		
+
 		for(i = 0; i < num_columns; i++)
 		{
 			column = mysql_fetch_field_direct(result, i);
@@ -149,20 +149,20 @@ BUS * get_bus_by_reg_no (char * bus_reg_no)
 			}
 		}
 	}
-	
+
 	mysql_free_result (result);
 	mysql_close (conn);
 
 	return bus;
 }
 
-BUSLIST * get_bus_by_owner_id (int owner_id)
+GSList * get_bus_by_owner_id (int owner_id)
 {
 	MYSQL * conn;
 	MYSQL_RES * result;
 	MYSQL_ROW row;
 	MYSQL_FIELD	* column;
-	BUSLIST * bus_list = NULL;
+	GSList * bus_list = NULL;
 	char query[512];
 
 	conn = mysql_init (NULL);
@@ -173,8 +173,6 @@ BUSLIST * get_bus_by_owner_id (int owner_id)
 	mysql_query (conn, query);
 	result = mysql_store_result (conn);
 
-	bus_list = make_bus_list ();
-	
 	int num_columns = mysql_num_fields(result);
 	int i;
 
@@ -182,7 +180,7 @@ BUSLIST * get_bus_by_owner_id (int owner_id)
 	{
 		BUS * bus = malloc (sizeof (BUS));
 		unsigned long * lengths = mysql_fetch_lengths(result);
-	
+
 		for(i = 0; i < num_columns; i++)
 		{
 			column = mysql_fetch_field_direct(result, i);
@@ -219,7 +217,7 @@ BUSLIST * get_bus_by_owner_id (int owner_id)
 				// We may need timestamp someday....
 			}
 		}
-		add_bus_to_list (bus_list, bus);
+		bus_list = g_slist_append(bus_list, bus);
 	}
 	mysql_free_result (result);
 	mysql_close (conn);
@@ -227,13 +225,13 @@ BUSLIST * get_bus_by_owner_id (int owner_id)
 	return bus_list;
 }
 
-BUSLIST * get_bus_by_model (char * bus_model)
+GSList * get_bus_by_model (char * bus_model)
 {
 	MYSQL * conn;
 	MYSQL_RES * result;
 	MYSQL_ROW row;
 	MYSQL_FIELD	* column;
-	BUSLIST * bus_list = NULL;
+	GSList * bus_list = NULL;
 	char query[512];
 
 	conn = mysql_init (NULL);
@@ -244,8 +242,6 @@ BUSLIST * get_bus_by_model (char * bus_model)
 	mysql_query (conn, query);
 	result = mysql_store_result (conn);
 
-	bus_list = make_bus_list ();
-	
 	int num_columns = mysql_num_fields(result);
 	int i;
 
@@ -290,7 +286,8 @@ BUSLIST * get_bus_by_model (char * bus_model)
 				// We may need timestamp someday....
 			}
 		}
-		add_bus_to_list (bus_list, bus);
+		//add_bus_to_list (bus_list, bus);
+		bus_list = g_slist_append(bus_list, bus);
 	}
 	mysql_free_result (result);
 	mysql_close (conn);

@@ -1,5 +1,5 @@
 #include "bus_reg_ui.h"
-#include "bus_ds.h"
+#include "bus.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -38,20 +38,20 @@ bus_ui * create_bus_reg_window ()
 	gtk_window_set_position(GTK_WINDOW(bui->window), GTK_WIN_POS_CENTER);
 	gtk_window_set_title(GTK_WINDOW(bui->window), "Bus Registration");
 	gtk_window_set_default_size(GTK_WINDOW(bui->window), 500, 400);
-    gtk_container_set_border_width(GTK_CONTAINER(bui->window), 10);
+	gtk_container_set_border_width(GTK_CONTAINER(bui->window), 10);
 
-    bui->vbox = gtk_vbox_new(FALSE, 5);
-    gtk_container_add(GTK_CONTAINER(bui->window), bui->vbox);
+	bui->vbox = gtk_vbox_new(FALSE, 5);
+	gtk_container_add(GTK_CONTAINER(bui->window), bui->vbox);
 	gtk_box_set_spacing (GTK_BOX(bui->vbox), 5);
 
-    bui->title = gtk_label_new ("Bus Registration");
-    gtk_box_pack_start(GTK_BOX(bui->vbox), bui->title, FALSE, FALSE, 0);
+	bui->title = gtk_label_new ("Bus Registration");
+	gtk_box_pack_start(GTK_BOX(bui->vbox), bui->title, FALSE, FALSE, 0);
 
-    bui->owner_table = gtk_table_new (3, 3, FALSE);
+	bui->owner_table = gtk_table_new (3, 3, FALSE);
 	gtk_container_set_border_width(GTK_CONTAINER(bui->owner_table), 10);
 	gtk_table_set_row_spacings(GTK_TABLE(bui->owner_table), 5);
- 	gtk_table_set_col_spacings(GTK_TABLE(bui->owner_table), 5);
-	
+	gtk_table_set_col_spacings(GTK_TABLE(bui->owner_table), 5);
+
 	bui->lowner_name = gtk_label_new ("Owner Name : ");
 	bui->lowner_address = gtk_label_new ("Owner Address : ");
 	bui->lowner_city = gtk_label_new ("Owner City : ");
@@ -75,13 +75,13 @@ bus_ui * create_bus_reg_window ()
 	gtk_table_attach (GTK_TABLE(bui->owner_table), bui->lowner_address, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 	gtk_table_attach (GTK_TABLE(bui->owner_table), bui->lowner_city, 0, 1, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
-    gtk_table_attach_defaults (GTK_TABLE(bui->owner_table), bui->towner_name, 1, 2, 0, 1);
-    gtk_table_attach_defaults (GTK_TABLE(bui->owner_table), bui->towner_address, 1, 2, 1, 2);
+	gtk_table_attach_defaults (GTK_TABLE(bui->owner_table), bui->towner_name, 1, 2, 0, 1);
+	gtk_table_attach_defaults (GTK_TABLE(bui->owner_table), bui->towner_address, 1, 2, 1, 2);
 	gtk_table_attach_defaults (GTK_TABLE(bui->owner_table), bui->towner_city, 1, 2, 2, 3);
 	gtk_table_attach (GTK_TABLE(bui->owner_table), bui->select_owner, 2, 3, 0, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 
 	bui->owner_frame = gtk_frame_new(" Owner Details ");
-  	gtk_frame_set_shadow_type(GTK_FRAME(bui->owner_frame), GTK_SHADOW_ETCHED_IN);
+	gtk_frame_set_shadow_type(GTK_FRAME(bui->owner_frame), GTK_SHADOW_ETCHED_IN);
 
 	gtk_container_add(GTK_CONTAINER(bui->owner_frame), bui->owner_table);
 	gtk_box_pack_start(GTK_BOX(bui->vbox), bui->owner_frame, FALSE, FALSE, 0);
@@ -89,7 +89,7 @@ bus_ui * create_bus_reg_window ()
 	bui->bus_table = gtk_table_new (4, 2, FALSE);
 	gtk_container_set_border_width(GTK_CONTAINER(bui->bus_table), 10);
 	gtk_table_set_row_spacings(GTK_TABLE(bui->bus_table), 5);
- 	gtk_table_set_col_spacings(GTK_TABLE(bui->bus_table), 5);
+	gtk_table_set_col_spacings(GTK_TABLE(bui->bus_table), 5);
 
 	bui->bus_frame = gtk_frame_new(" Bus Details ");
 	gtk_frame_set_shadow_type(GTK_FRAME(bui->owner_frame), GTK_SHADOW_ETCHED_IN);
