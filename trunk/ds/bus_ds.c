@@ -39,11 +39,11 @@ BUSLIST * delete_bus_list (BUSLIST * list)
         return NULL;
 }
 
-static void recursive_delete (BUSLIST * list)
+static void recursive_bus_delete (BUSLIST * list)
 {
         if (list == NULL)
                 return;
-        recursive_delete( list->next );
+        recursive_bus_delete( list->next );
         free (list->bus);
         free (list);
 }
