@@ -8,6 +8,7 @@ BUS * get_bus_by_id (int bus_id);
 BUS * get_bus_by_reg_no (char * bus_reg_no);
 BUSLIST * get_bus_by_owner_id (int owner_id);
 BUSLIST * get_bus_by_model (char * bus_model);
+BUSLIST * get_all_buses ();
 
 // insert
 void insert_bus (BUS * bus);
