@@ -70,7 +70,11 @@ void open_mainwindow ()
 
 	menubar = gtk_menu_bar_new ();
 
-// start
+/*
+  System | Maintainence | Finance | Statistics | About
+*/
+
+    // start
     sysmenu = gtk_menu_new();
     sys_menu_item = gtk_menu_item_new_with_label ("System");
     gtk_menu_item_set_submenu (GTK_MENU_ITEM(sys_menu_item), sysmenu);
