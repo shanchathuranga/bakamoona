@@ -2,6 +2,7 @@
 #define _BUS_REG_UI_H_
 
 #include <gtk/gtk.h>
+#include "owner_search_ui.h"
 
 typedef struct _bus_ui
 {

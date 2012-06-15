@@ -10,7 +10,8 @@ SOURCES = 	./db/db.c \
 			./gui/mainwin_ui.c \
       		./gui/owner_reg_ui.c \
 			./gui/bus_reg_ui.c \
-      		./gui/worker_reg_ui.c
+      		./gui/worker_reg_ui.c \
+			./gui/owner_search_ui.c
 
 .PHONY: all
 all:
