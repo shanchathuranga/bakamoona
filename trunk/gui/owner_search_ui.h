@@ -1,4 +1,8 @@
+#ifndef _OWNER_SEARCH_UI_H_
+#define _OWNER_SEARCH_UI_H_
+
 #include <gtk/gtk.h>
+#include "owner.h"
 
 typedef struct _owner_search_ui
 {
@@ -35,3 +39,5 @@ enum
 owner_search_ui * ow_search_ui;
 
 owner_search_ui * create_owner_search_window ();
+
+#endif

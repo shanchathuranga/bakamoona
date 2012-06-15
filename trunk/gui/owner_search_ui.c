@@ -1,5 +1,4 @@
 #include "owner_search_ui.h"
-#include "owner.h"
 #include <stdlib.h>
 
 static void add_data (GtkWidget * list, OWNER * owner)
@@ -34,9 +33,9 @@ void item_double_clicked (GtkTreeView * view, GtkTreePath * path, GtkTreeViewCol
 
     if (gtk_tree_model_get_iter(model, &iter, path))
     {
-       int id;
-       gtk_tree_model_get(model, &iter, COL_ID, &id, -1);
-       g_print ("Double-clicked row contains id %d\n", id);
+       	int id;
+       	gtk_tree_model_get(model, &iter, COL_ID, &id, -1);
+       	g_print ("Double-clicked row contains id %d\n", id);
     }
 }
 
