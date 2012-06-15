@@ -19,7 +19,8 @@ typedef struct _owner_search_ui
 
 enum
 {
-    COL_NAME = 0,
+	COL_ID = 0,
+    COL_NAME,
     COL_REG_NO,
     COL_PHONE_1,
     COL_PHONE_2,
