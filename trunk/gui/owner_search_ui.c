@@ -121,6 +121,33 @@ owner_search_ui * create_owner_search_window ()
 
     ow_search_ui->title = gtk_label_new ("Owners");
     gtk_box_pack_start (GTK_BOX(ow_search_ui->vbox), ow_search_ui->title, FALSE, FALSE, 0);
+    
+    ow_search_ui->filter_by = gtk_label_new ("Filter By : ");
+    ow_search_ui->filter_combo = gtk_combo_box_new_text ();
+
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "--- No Filter ---");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Name");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Reg No");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Phone (1)");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Phone (2)");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Address (1)");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "City (1)");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Address (2)");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "City (2)");
+    gtk_combo_box_append_text (GTK_COMBO_BOX(ow_search_ui->filter_combo), "Email");
+
+    gtk_combo_box_set_active (GTK_COMBO_BOX(ow_search_ui->filter_combo), 0);
+
+    ow_search_ui->filter_lbl = gtk_label_new ("Filter Text : ");
+    ow_search_ui->filter_txt = gtk_entry_new ();
+
+    ow_search_ui->filter_box = gtk_hbox_new (FALSE, 5);
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->filter_box), ow_search_ui->filter_by, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->filter_box), ow_search_ui->filter_combo, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->filter_box), ow_search_ui->filter_lbl, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->filter_box), ow_search_ui->filter_txt, TRUE, TRUE, 0);
+
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->vbox), ow_search_ui->filter_box, FALSE, FALSE, 0);
 
     ow_search_ui->sw = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_set_size_request (ow_search_ui->sw, 600, 400);
