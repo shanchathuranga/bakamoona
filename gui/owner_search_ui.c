@@ -12,6 +12,7 @@ static void add_data (GtkWidget * list, OWNER * owner)
 
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store, &iter, 
+		COL_ID, owner->owner_id,
 		COL_NAME, owner->owner_name, 
 		COL_REG_NO, owner->owner_reg_no,
 		COL_PHONE_1, owner->phone1,
@@ -24,6 +25,21 @@ static void add_data (GtkWidget * list, OWNER * owner)
 		 -1);
 }
 
+void item_double_clicked (GtkTreeView * view, GtkTreePath * path, GtkTreeViewColumn * col, gpointer data)
+{
+	GtkTreeModel * model;
+    GtkTreeIter iter;
+
+    model = gtk_tree_view_get_model(view);
+
+    if (gtk_tree_model_get_iter(model, &iter, path))
+    {
+       int id;
+       gtk_tree_model_get(model, &iter, COL_ID, &id, -1);
+       g_print ("Double-clicked row contains id %d\n", id);
+    }
+}
+
 GtkWidget * create_view ()
 {
     GtkWidget *list;
@@ -34,6 +50,14 @@ GtkWidget * create_view ()
     list = gtk_tree_view_new();
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(list), TRUE);
     gtk_tree_view_set_rules_hint (GTK_TREE_VIEW(list), TRUE);
+
+	col = gtk_tree_view_column_new(); // Id
+
+    gtk_tree_view_column_set_title(col, "ID");
+    gtk_tree_view_append_column(GTK_TREE_VIEW(list), col);
+    renderer = gtk_cell_renderer_text_new();
+    gtk_tree_view_column_pack_start(col, renderer, TRUE);
+    gtk_tree_view_column_add_attribute(col, renderer, "text", COL_ID);
 
     col = gtk_tree_view_column_new(); // Name
 
@@ -107,7 +131,7 @@ GtkWidget * create_view ()
     gtk_tree_view_column_pack_start(col, renderer, TRUE);
     gtk_tree_view_column_add_attribute(col, renderer, "text", COL_EMAIL);
 
-    store = gtk_list_store_new(COL_COUNT, 
+    store = gtk_list_store_new(COL_COUNT, G_TYPE_UINT,
         G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
         G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
         G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
@@ -116,7 +140,10 @@ GtkWidget * create_view ()
     g_object_unref(store); 
 
     gtk_tree_selection_set_mode(gtk_tree_view_get_selection(
-                GTK_TREE_VIEW(list)), GTK_SELECTION_SINGLE);
+            GTK_TREE_VIEW(list)), GTK_SELECTION_SINGLE);
+
+	g_signal_connect(GTK_TREE_VIEW(list), "row-activated", 
+			G_CALLBACK(item_double_clicked), NULL);
 
     return list;
 }
