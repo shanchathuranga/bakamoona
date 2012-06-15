@@ -10,6 +10,11 @@ typedef struct _owner_search_ui
     GtkWidget * refresh;
     GtkWidget * select;
     GtkWidget * cancel;
+    GtkWidget * filter_lbl;
+    GtkWidget * filter_txt;
+    GtkWidget * filter_by;
+    GtkWidget * filter_combo;
+    GtkWidget * filter_box;
 } owner_search_ui;
 
 enum
