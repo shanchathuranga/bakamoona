@@ -12,6 +12,11 @@ static void clear_fields ()
 	gtk_entry_set_text(GTK_ENTRY(bui->tbus_desc), "");
 }
 
+static void search_button_clicked (GtkWidget * widget, gpointer data)
+{
+	create_owner_search_window ();
+}
+
 static void clear_button_clicked (GtkWidget * widget, gpointer data)
 {
 	clear_fields ();
@@ -142,6 +147,9 @@ bus_ui * create_bus_reg_window ()
 
 	g_signal_connect_swapped (G_OBJECT(bui->window), "destroy",
         G_CALLBACK(gtk_widget_destroy), G_OBJECT(bui->window));
+
+	g_signal_connect (G_OBJECT(bui->select_owner), "clicked",
+		G_CALLBACK(search_button_clicked), G_OBJECT(bui->window));
 
 	g_signal_connect (G_OBJECT(bui->ok), "clicked",
 		G_CALLBACK(ok_button_clicked), G_OBJECT(bui->window));

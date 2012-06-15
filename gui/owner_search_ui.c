@@ -1,6 +1,8 @@
 #include "owner_search_ui.h"
+#include "owner.h"
+#include <stdlib.h>
 
-void add_data (GtkWidget * list, char * name, char * age)
+static void add_data (GtkWidget * list, OWNER * owner)
 {
     GtkListStore *store;
     GtkTreeIter iter;
@@ -9,7 +11,17 @@ void add_data (GtkWidget * list, char * name, char * age)
             (GTK_TREE_VIEW(list)));
 
     gtk_list_store_append(store, &iter);
-    gtk_list_store_set(store, &iter, COL_NAME, name, COL_REG_NO, age, -1);
+    gtk_list_store_set(store, &iter, 
+		COL_NAME, owner->owner_name, 
+		COL_REG_NO, owner->owner_reg_no,
+		COL_PHONE_1, owner->phone1,
+    	COL_PHONE_2, owner->phone2,
+    	COL_ADDRESS_1, owner->address1,
+    	COL_CITY_1, owner->city1,
+    	COL_ADDRESS_2, owner->address2,
+    	COL_CITY_2, owner->city2, 
+    	COL_EMAIL, owner->email,
+		 -1);
 }
 
 GtkWidget * create_view ()
@@ -116,7 +128,7 @@ owner_search_ui * create_owner_search_window ()
     ow_search_ui->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_container_set_border_width(GTK_CONTAINER(ow_search_ui->window), 10);
 
-    ow_search_ui->vbox = gtk_vbox_new(FALSE, 5);
+    ow_search_ui->vbox = gtk_vbox_new(FALSE, 10);
     gtk_container_add(GTK_CONTAINER(ow_search_ui->window), ow_search_ui->vbox);
 
     ow_search_ui->title = gtk_label_new ("Owners");
@@ -158,16 +170,14 @@ owner_search_ui * create_owner_search_window ()
 
     GtkWidget * list = create_view ();
 
-    add_data (list, "Ashan", "25");
-    add_data (list, "kamal", "54");
-    add_data (list, "saman", "34");
-    add_data (list, "Nimal", "25");
-    add_data (list, "Amal", "25");
-    add_data (list, "Kumara", "25");
-    add_data (list, "Nimal", "25");
-    add_data (list, "Nimal", "25");
-    add_data (list, "Nimal", "25");
-    add_data (list, "Nimal", "25");
+	GSList * owner_list = get_all_owners ();
+
+	GSList * owner_iter;
+	for (owner_iter = owner_list; owner_iter; owner_iter = owner_iter->next)
+	{
+		printf ("owner id = %d\n", ((OWNER *)(owner_iter->data))->owner_id);
+		add_data (list, (OWNER *)(owner_iter->data));
+	}
 
     gtk_container_add(GTK_CONTAINER (ow_search_ui->sw), list);
     gtk_box_pack_start(GTK_BOX(ow_search_ui->vbox), ow_search_ui->sw, FALSE, FALSE, 0);
@@ -185,6 +195,8 @@ owner_search_ui * create_owner_search_window ()
     gtk_box_pack_end (GTK_BOX(ow_search_ui->hbox), ow_search_ui->select, FALSE, FALSE, 0);
 
     gtk_box_pack_end (GTK_BOX(ow_search_ui->vbox), ow_search_ui->hbox, FALSE, FALSE, 0);
+
+	gtk_window_set_modal (GTK_WINDOW(ow_search_ui->window), TRUE);
 
     gtk_widget_show_all(ow_search_ui->window);
 
