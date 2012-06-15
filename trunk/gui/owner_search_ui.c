@@ -109,24 +109,24 @@ GtkWidget * create_view ()
     return list;
 }
 
-int main( int argc, char *argv[])
+owner_search_ui * create_owner_search_window ()
 {
-    gtk_init(&argc, &argv);
+    ow_search_ui = malloc (sizeof(owner_search_ui));
 
-    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_container_set_border_width(GTK_CONTAINER(window), 10);
+    ow_search_ui->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_container_set_border_width(GTK_CONTAINER(ow_search_ui->window), 10);
 
-    vbox = gtk_vbox_new(FALSE, 5);
-    gtk_container_add(GTK_CONTAINER(window), vbox);
+    ow_search_ui->vbox = gtk_vbox_new(FALSE, 5);
+    gtk_container_add(GTK_CONTAINER(ow_search_ui->window), ow_search_ui->vbox);
 
-    title = gtk_label_new ("Owners");
-    gtk_box_pack_start (GTK_BOX(vbox), title, FALSE, FALSE, 0);
+    ow_search_ui->title = gtk_label_new ("Owners");
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->vbox), ow_search_ui->title, FALSE, FALSE, 0);
 
-    sw = gtk_scrolled_window_new (NULL, NULL);
-    gtk_widget_set_size_request (sw, 600, 400);
-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
+    ow_search_ui->sw = gtk_scrolled_window_new (NULL, NULL);
+    gtk_widget_set_size_request (ow_search_ui->sw, 600, 400);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(ow_search_ui->sw),
             GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-    gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(sw),
+    gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(ow_search_ui->sw),
             GTK_SHADOW_IN);    
 
     GtkWidget * list = create_view ();
@@ -142,29 +142,27 @@ int main( int argc, char *argv[])
     add_data (list, "Nimal", "25");
     add_data (list, "Nimal", "25");
 
-    gtk_container_add(GTK_CONTAINER (sw), list);
-    gtk_box_pack_start(GTK_BOX(vbox), sw, FALSE, FALSE, 0);
+    gtk_container_add(GTK_CONTAINER (ow_search_ui->sw), list);
+    gtk_box_pack_start(GTK_BOX(ow_search_ui->vbox), ow_search_ui->sw, FALSE, FALSE, 0);
 
-    hbox = gtk_hbox_new (FALSE, 5);
-    refresh = gtk_button_new_with_label ("Refresh");
-    gtk_widget_set_size_request (refresh, 100, 30);
-    select = gtk_button_new_with_label ("Select");
-    gtk_widget_set_size_request (select, 100, 30);
-    cancel = gtk_button_new_with_label ("Cancel");
-    gtk_widget_set_size_request (cancel, 100, 30);
+    ow_search_ui->hbox = gtk_hbox_new (FALSE, 5);
+    ow_search_ui->refresh = gtk_button_new_with_label ("Refresh");
+    gtk_widget_set_size_request (ow_search_ui->refresh, 100, 30);
+    ow_search_ui->select = gtk_button_new_with_label ("Select");
+    gtk_widget_set_size_request (ow_search_ui->select, 100, 30);
+    ow_search_ui->cancel = gtk_button_new_with_label ("Cancel");
+    gtk_widget_set_size_request (ow_search_ui->cancel, 100, 30);
 
-    gtk_box_pack_start (GTK_BOX(hbox), refresh, FALSE, FALSE, 0);
-    gtk_box_pack_end (GTK_BOX(hbox), cancel, FALSE, FALSE, 0);
-    gtk_box_pack_end (GTK_BOX(hbox), select, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX(ow_search_ui->hbox), ow_search_ui->refresh, FALSE, FALSE, 0);
+    gtk_box_pack_end (GTK_BOX(ow_search_ui->hbox), ow_search_ui->cancel, FALSE, FALSE, 0);
+    gtk_box_pack_end (GTK_BOX(ow_search_ui->hbox), ow_search_ui->select, FALSE, FALSE, 0);
 
-    gtk_box_pack_end (GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+    gtk_box_pack_end (GTK_BOX(ow_search_ui->vbox), ow_search_ui->hbox, FALSE, FALSE, 0);
 
-    gtk_widget_show_all(window);
+    gtk_widget_show_all(ow_search_ui->window);
 
-    g_signal_connect_swapped (G_OBJECT(window), "destroy",
-            G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect_swapped (G_OBJECT(ow_search_ui->window), "destroy",
+            G_CALLBACK(gtk_widget_destroy), ow_search_ui->window);
 
-    gtk_main();
-
-    return 0;
+    return ow_search_ui;
 }
