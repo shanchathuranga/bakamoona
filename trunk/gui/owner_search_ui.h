@@ -1,13 +1,16 @@
 #include <gtk/gtk.h>
 
-GtkWidget * window;
-GtkWidget * vbox;
-GtkWidget * title;
-GtkWidget * sw;
-GtkWidget * hbox;
-GtkWidget * refresh;
-GtkWidget * select;
-GtkWidget * cancel;
+typedef struct _owner_search_ui
+{
+    GtkWidget * window;
+    GtkWidget * vbox;
+    GtkWidget * title;
+    GtkWidget * sw;
+    GtkWidget * hbox;
+    GtkWidget * refresh;
+    GtkWidget * select;
+    GtkWidget * cancel;
+} owner_search_ui;
 
 enum
 {
@@ -22,3 +25,7 @@ enum
     COL_EMAIL,
     COL_COUNT
 };
+
+owner_search_ui * ow_search_ui;
+
+owner_search_ui * create_owner_search_window ();
