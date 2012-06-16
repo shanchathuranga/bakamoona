@@ -2,7 +2,7 @@
 #include "owner_reg_ui.h"
 #include "bus_reg_ui.h"
 #include "worker_reg_ui.h"
-
+#include "sparepart_reg_ui.h"
 
 
 void add_bus_clicked (GtkWidget * widget, gpointer data)
@@ -25,13 +25,7 @@ void add_owner_clicked (GtkWidget * widget, gpointer data)
 
 void add_sparepart_clicked (GtkWidget * widget, gpointer data)
 {
-	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_position(GTK_WINDOW(w), GTK_WIN_POS_CENTER);
-	gtk_window_set_title(GTK_WINDOW(w), "Spare Part Registration");
-  	gtk_window_set_default_size(GTK_WINDOW(w), 300, 100);
-	gtk_widget_show_all (w);
-	g_signal_connect_swapped(G_OBJECT(w), "destroy",
-        G_CALLBACK(gtk_widget_destroy), NULL);
+	create_sparepart_reg_window ();
 }
 
 void add_worker_clicked (GtkWidget * widget, gpointer data)
