@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+int selected_owner_id = -1;
+
 static void clear_fields ()
 {
 	gtk_entry_set_text(GTK_ENTRY(bui->tbus_regno), "");
@@ -14,7 +16,7 @@ static void clear_fields ()
 
 static void search_button_clicked (GtkWidget * widget, gpointer data)
 {
-	create_owner_search_window ();
+	create_owner_search_window (bui->towner_name, bui->towner_address, bui->towner_city);
 }
 
 static void clear_button_clicked (GtkWidget * widget, gpointer data)
@@ -31,7 +33,14 @@ static void ok_button_clicked (GtkWidget * widget, gpointer data)
 {
 	BUS * bus = malloc (sizeof(BUS));
 
-	//insert_bus (bus);
+	bus->owner_id = selected_owner_id;
+	strcpy (bus->bus_reg_no, gtk_entry_get_text(GTK_ENTRY(bui->tbus_regno)));
+	strcpy (bus->bus_eng_no, gtk_entry_get_text(GTK_ENTRY(bui->tengine_no)));
+	strcpy (bus->bus_chs_no, gtk_entry_get_text(GTK_ENTRY(bui->tchassy_no)));
+	strcpy (bus->bus_model, gtk_entry_get_text(GTK_ENTRY(bui->tbus_model)));
+	strcpy (bus->bus_desc, gtk_entry_get_text(GTK_ENTRY(bui->tbus_desc)));
+	
+	insert_bus (bus);
 
 	clear_fields ();
 }

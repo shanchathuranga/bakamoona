@@ -21,6 +21,7 @@
 	bus_eng_no VARCHAR (64), \
 	bus_chs_no VARCHAR (64), \
 	bus_model VARCHAR (64), \
+	bus_desc VARCHAR (255), \
 	deleted INT, \
 	ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, \
 	PRIMARY KEY (bus_id) \

@@ -1,6 +1,10 @@
 #include "owner_search_ui.h"
 #include <stdlib.h>
 
+GtkWidget * ow_name = NULL;
+GtkWidget * ow_addr = NULL;
+GtkWidget * ow_city = NULL;
+
 static void add_data (GtkWidget * list, OWNER * owner)
 {
     GtkListStore *store;
@@ -35,8 +39,18 @@ void item_double_clicked (GtkTreeView * view, GtkTreePath * path, GtkTreeViewCol
     {
        	int id;
        	gtk_tree_model_get(model, &iter, COL_ID, &id, -1);
-       	g_print ("Double-clicked row contains id %d\n", id);
+
+		OWNER * selected_owner = get_owner_by_id (id);
+		if (selected_owner)
+		{
+			gtk_label_set_markup (GTK_LABEL(ow_name), selected_owner->owner_name);
+			gtk_label_set_markup (GTK_LABEL(ow_addr), selected_owner->address1);
+			gtk_label_set_markup (GTK_LABEL(ow_city), selected_owner->city1);
+			extern int selected_owner_id;
+			selected_owner_id = id;
+		}
     }
+	gtk_widget_destroy (ow_search_ui->window);
 }
 
 GtkWidget * create_view ()
@@ -147,8 +161,11 @@ GtkWidget * create_view ()
     return list;
 }
 
-owner_search_ui * create_owner_search_window ()
+owner_search_ui * create_owner_search_window (GtkWidget * n, GtkWidget * a, GtkWidget * c)
 {
+	ow_name = n;
+	ow_addr = a;
+	ow_city = c;
     ow_search_ui = malloc (sizeof(owner_search_ui));
 
     ow_search_ui->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);

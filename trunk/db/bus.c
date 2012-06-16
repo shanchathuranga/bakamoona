@@ -303,20 +303,13 @@ void insert_bus (BUS * bus)
 	MYSQL * conn;
 	char query[1024];
 
-	int owner_id = bus->owner_id;
-	char bus_reg_no[20];
-	if (bus->bus_reg_no)
-		strcpy (bus_reg_no, bus->bus_reg_no);
-	else
-		strcpy (bus_reg_no, "NULL");
-
-	char bus_model[64];
-	if (bus->bus_model)
-		strcpy (bus_model, bus->bus_model);
-	else
-		strcpy (bus_model, "NULL");
-
-	sprintf (query, "INSERT INTO Bus (owner_id, bus_reg_no, bus_model) VALUES (%d, \"%s\", \"%s\")", owner_id, bus_reg_no, bus_model);
+	sprintf (query, "INSERT INTO Bus (owner_id, bus_reg_no, bus_eng_no, bus_chs_no, bus_model, bus_desc) \
+			VALUES (%d, \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")", bus->owner_id, 
+			bus->bus_reg_no, 
+			bus->bus_eng_no,
+			bus->bus_chs_no,
+			bus->bus_model,
+			bus->bus_desc);
 
 	conn = mysql_init (NULL);
 	mysql_real_connect (conn, "localhost", "root", "root", "bakamoona", 0, NULL, 0);
