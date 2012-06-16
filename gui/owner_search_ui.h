@@ -38,6 +38,6 @@ enum
 
 owner_search_ui * ow_search_ui;
 
-owner_search_ui * create_owner_search_window ();
+owner_search_ui * create_owner_search_window (GtkWidget * n, GtkWidget * a, GtkWidget * c);
 
 #endif
