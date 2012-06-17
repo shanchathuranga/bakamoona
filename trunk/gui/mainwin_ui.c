@@ -65,10 +65,10 @@ void open_mainwindow ()
 	menubar = gtk_menu_bar_new ();
 
 /*
-  System | Maintainence | Finance | Statistics | About
+  System | Maintenance | Finance | Search | Statistics | About
 */
 
-    // start
+    // System
     sysmenu = gtk_menu_new();
     sys_menu_item = gtk_menu_item_new_with_label ("System");
     gtk_menu_item_set_submenu (GTK_MENU_ITEM(sys_menu_item), sysmenu);
@@ -140,7 +140,66 @@ void open_mainwindow ()
     gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), quit);
         
     gtk_menu_shell_append (GTK_MENU_SHELL(menubar), sys_menu_item);
-    
+
+	mntmenu = gtk_menu_new();
+    mnt_menu_item = gtk_menu_item_new_with_label ("Maintenance");
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(mnt_menu_item), mntmenu);
+
+	gtk_menu_shell_append (GTK_MENU_SHELL(menubar), mnt_menu_item);
+
+	addmnt = gtk_menu_item_new_with_label ("Add Maintenance");
+    updatemnt = gtk_menu_item_new_with_label ("Update Maintenance");
+
+	gtk_menu_shell_append (GTK_MENU_SHELL(mntmenu), addmnt);
+	gtk_menu_shell_append (GTK_MENU_SHELL(mntmenu), updatemnt);
+
+	//
+
+	finmenu = gtk_menu_new();
+    fin_menu_item = gtk_menu_item_new_with_label ("Finance");
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(fin_menu_item), finmenu);
+
+	gtk_menu_shell_append (GTK_MENU_SHELL(menubar), fin_menu_item);
+
+	addfin = gtk_menu_item_new_with_label ("Add Bill");
+    updatefin = gtk_menu_item_new_with_label ("Update Bill");
+
+	gtk_menu_shell_append (GTK_MENU_SHELL(finmenu), addfin);
+	gtk_menu_shell_append (GTK_MENU_SHELL(finmenu), updatefin);
+	
+	//
+
+	searchmenu = gtk_menu_new();
+    search_menu_item = gtk_menu_item_new_with_label ("Search");
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(search_menu_item), searchmenu);
+
+	gtk_menu_shell_append (GTK_MENU_SHELL(menubar), search_menu_item);
+
+	search_bus = gtk_menu_item_new_with_label ("Bus");
+	search_own = gtk_menu_item_new_with_label ("Owner");
+	search_worker = gtk_menu_item_new_with_label ("Worker");
+	search_sp = gtk_menu_item_new_with_label ("Spare Part");
+	search_bill = gtk_menu_item_new_with_label ("Bill");
+	search_mnt = gtk_menu_item_new_with_label ("Maintenance");
+	
+	gtk_menu_shell_append (GTK_MENU_SHELL(searchmenu), search_bus);
+	gtk_menu_shell_append (GTK_MENU_SHELL(searchmenu), search_own);
+	gtk_menu_shell_append (GTK_MENU_SHELL(searchmenu), search_worker);
+	gtk_menu_shell_append (GTK_MENU_SHELL(searchmenu), search_sp);
+	gtk_menu_shell_append (GTK_MENU_SHELL(searchmenu), search_bill);
+	gtk_menu_shell_append (GTK_MENU_SHELL(searchmenu), search_mnt);
+
+	//
+
+	aboutmenu = gtk_menu_new();
+    about_menu_item = gtk_menu_item_new_with_label ("About");
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(about_menu_item), aboutmenu);
+
+	gtk_menu_shell_append (GTK_MENU_SHELL(menubar), about_menu_item);
+	
+	devteam = gtk_menu_item_new_with_label ("About DEV team");
+	gtk_menu_shell_append (GTK_MENU_SHELL(aboutmenu), devteam);
+
 // end
 
   	gtk_box_pack_start (GTK_BOX(layout), menubar, FALSE, FALSE, 0);

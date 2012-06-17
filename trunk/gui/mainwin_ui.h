@@ -37,6 +37,37 @@ GtkWidget * deleteworker;
 GtkWidget * sep;
 GtkWidget * quit;
 
+// Maintenance
+GtkWidget * mntmenu;
+GtkWidget * mnt_menu_item;
+
+GtkWidget * addmnt;
+GtkWidget * updatemnt;
+
+// Finance
+GtkWidget * finmenu;
+GtkWidget * fin_menu_item;
+
+GtkWidget * addfin;
+GtkWidget * updatefin;
+
+// Search
+GtkWidget * searchmenu;
+GtkWidget * search_menu_item;
+
+GtkWidget * search_bus;
+GtkWidget * search_own;
+GtkWidget * search_worker;
+GtkWidget * search_sp;
+GtkWidget * search_bill;
+GtkWidget * search_mnt;
+
+// About
+GtkWidget * aboutmenu;
+GtkWidget * about_menu_item;
+
+GtkWidget * devteam;
+
 GtkWidget * toolbar;
 GtkToolItem * quit_tool;
 GtkToolItem * new_tool;

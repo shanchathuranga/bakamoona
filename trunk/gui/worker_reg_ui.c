@@ -2,6 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+static void ok_button_clicked (GtkWidget * widget, gpointer data)
+{
+	// do something
+	gtk_widget_destroy (wrkui->window);
+}
+
+static void clear_button_clicked (GtkWidget * widget, gpointer data)
+{
+}
+
+static void cancel_button_clicked (GtkWidget * widget, gpointer data)
+{
+	gtk_widget_destroy (wrkui->window);
+}
+
 worker_ui * create_worker_reg_window ()
 {
 	wrkui = malloc (sizeof(worker_ui));
@@ -102,6 +117,15 @@ worker_ui * create_worker_reg_window ()
 	////////////////////
 	g_signal_connect_swapped(G_OBJECT(wrkui->window), "destroy",
 			G_CALLBACK(gtk_widget_destroy), G_OBJECT(wrkui->window));
+
+	g_signal_connect_swapped(G_OBJECT(wrkui->ok_button), "clicked",
+			G_CALLBACK(ok_button_clicked), G_OBJECT(wrkui->window));
+
+	g_signal_connect_swapped(G_OBJECT(wrkui->clear_button), "clicked",
+			G_CALLBACK(clear_button_clicked), G_OBJECT(wrkui->window));
+
+	g_signal_connect_swapped(G_OBJECT(wrkui->cancel_button), "clicked",
+			G_CALLBACK(cancel_button_clicked), G_OBJECT(wrkui->window));
 
 	gtk_window_set_modal (GTK_WINDOW(wrkui->window), TRUE);
 
