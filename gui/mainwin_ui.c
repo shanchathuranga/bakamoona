@@ -3,7 +3,7 @@
 #include "bus_reg_ui.h"
 #include "worker_reg_ui.h"
 #include "sparepart_reg_ui.h"
-
+#include "maintenance_ui.h"
 
 void add_bus_clicked (GtkWidget * widget, gpointer data)
 {
@@ -30,12 +30,17 @@ void add_sparepart_clicked (GtkWidget * widget, gpointer data)
 
 void add_worker_clicked (GtkWidget * widget, gpointer data)
 {
-  create_worker_reg_window ();
+  	create_worker_reg_window ();
 }
 
 void quit_clicked (GtkWidget * widget, gpointer data)
 {
 	gtk_main_quit ();
+}
+
+void add_maintenance_clicked (GtkWidget * widget, gpointer data)
+{
+	create_maintenance_window ();
 }
 
 GdkPixbuf *create_pixbuf(const gchar * filename)
@@ -227,7 +232,7 @@ void open_mainwindow ()
 
 	g_signal_connect(G_OBJECT(addbus), "activate",
         G_CALLBACK(add_bus_clicked), NULL);
-        g_signal_connect(G_OBJECT(addworker), "activate",
+    g_signal_connect(G_OBJECT(addworker), "activate",
         G_CALLBACK(add_worker_clicked), NULL);
 	g_signal_connect(G_OBJECT(addowner), "activate",
         G_CALLBACK(add_owner_clicked), NULL);
@@ -235,6 +240,8 @@ void open_mainwindow ()
         G_CALLBACK(add_sparepart_clicked), NULL);
   	g_signal_connect(G_OBJECT(quit), "activate",
         G_CALLBACK(gtk_main_quit), NULL);
+	g_signal_connect(G_OBJECT(addmnt), "activate",
+        G_CALLBACK(add_maintenance_clicked), NULL);
 
 	gtk_window_maximize (GTK_WINDOW(mainwin));
   	gtk_widget_show_all(mainwin);
