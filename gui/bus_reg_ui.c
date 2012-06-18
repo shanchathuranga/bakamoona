@@ -5,6 +5,23 @@
 
 int selected_owner_id = -1;
 
+////////////////////
+static void show_error()
+{
+  GtkWidget *dialog;
+//GtkWidget *widget;
+  dialog = gtk_message_dialog_new(bui->window,
+            GTK_DIALOG_DESTROY_WITH_PARENT,
+            GTK_MESSAGE_ERROR,
+            GTK_BUTTONS_OK,
+            "Error loading file");
+  gtk_window_set_title(GTK_WINDOW(dialog), "Error");
+  gtk_dialog_run(GTK_DIALOG(dialog));
+  gtk_widget_destroy(dialog);
+}
+
+////////////////////
+
 static void clear_fields ()
 {
 	gtk_entry_set_text(GTK_ENTRY(bui->tbus_regno), "");
@@ -32,9 +49,18 @@ static void cancel_button_clicked (GtkWidget * widget, gpointer data)
 static void ok_button_clicked (GtkWidget * widget, gpointer data)
 {
 	BUS * bus = malloc (sizeof(BUS));
-
+//show_error();
 	bus->owner_id = selected_owner_id;
 	strcpy (bus->bus_reg_no, gtk_entry_get_text(GTK_ENTRY(bui->tbus_regno)));
+//////////
+            char text[7];
+            strcpy (text, gtk_entry_get_text(GTK_ENTRY(bui->tbus_regno)));
+            int len = strlen(text);
+              if(len != 7){
+                show_error();
+              }
+                
+//////////
 	strcpy (bus->bus_eng_no, gtk_entry_get_text(GTK_ENTRY(bui->tengine_no)));
 	strcpy (bus->bus_chs_no, gtk_entry_get_text(GTK_ENTRY(bui->tchassy_no)));
 	strcpy (bus->bus_model, gtk_entry_get_text(GTK_ENTRY(bui->tbus_model)));
