@@ -1,17 +1,30 @@
 #include "maintenance_ui.h"
 
-      
+static void ok_button_clicked (GtkWidget * widget, gpointer data)
+{
+}
 
+static void clear_button_clicked (GtkWidget * widget, gpointer data)
+{
+}
 
-void create_maintenance_window (){
+static void cancel_button_clicked (GtkWidget * widget, gpointer data)
+{
+	gtk_widget_destroy (window);
+}
 
- window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+void create_maintenance_window ()
+{
+ 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+	gtk_window_set_title(GTK_WINDOW(window), "New Maintenance");
+	gtk_window_set_default_size(GTK_WINDOW(window), 600, 500);
     gtk_container_set_border_width(GTK_CONTAINER(window), 10);
 
     GtkWidget * vbox = gtk_vbox_new(FALSE, 5);
     gtk_container_add(GTK_CONTAINER(window), vbox);
 
-    title = gtk_label_new ("New Main");
+    title = gtk_label_new ("New Maintenance");
     gtk_box_pack_start (GTK_BOX(vbox), title, FALSE, FALSE, 0);
 
     busframe = gtk_frame_new (" Bus Details ");
@@ -89,6 +102,9 @@ void create_maintenance_window (){
     ok = gtk_button_new_with_label (" OK ");
     clear = gtk_button_new_with_label (" Clear ");
     cancel = gtk_button_new_with_label (" Cancel ");
+	gtk_widget_set_size_request (clear, 100, 30);	
+	gtk_widget_set_size_request (ok, 100, 30);
+	gtk_widget_set_size_request (cancel, 100, 30);
 
     gtk_box_pack_start (GTK_BOX(btnbase), clear, FALSE, FALSE, 0);
     gtk_box_pack_end (GTK_BOX(btnbase), cancel, FALSE, FALSE, 0);
@@ -96,7 +112,18 @@ void create_maintenance_window (){
     gtk_box_pack_end (GTK_BOX(vbox), btnbase, FALSE, FALSE, 0);
 
     g_signal_connect_swapped (G_OBJECT(window), "destroy",
-        G_CALLBACK(gtk_main_quit), G_OBJECT(window));
+        G_CALLBACK(gtk_widget_destroy), G_OBJECT(window));
+
+	g_signal_connect (G_OBJECT(ok), "clicked",
+		G_CALLBACK(ok_button_clicked), G_OBJECT(window));
+
+	g_signal_connect (G_OBJECT(clear), "clicked",
+		G_CALLBACK(clear_button_clicked), G_OBJECT(window));
+
+	g_signal_connect (G_OBJECT(cancel), "clicked",
+		G_CALLBACK(cancel_button_clicked), G_OBJECT(window));
+
+	gtk_window_set_modal (GTK_WINDOW(window), TRUE);
     
     gtk_widget_show_all (window);
 
