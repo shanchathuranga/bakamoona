@@ -1,32 +1,31 @@
-#ifndef _MAINTENANCE_UI_H_
-#define _MAINTENANCE_UI_H_
+#ifndef MAINTENANCE_H_
+#define MAINTENANCE_H_
 
-typedef struct _mnt_ui
-{
-	GtkWidget * window;
-	GtkWidget * vbox;
-	GtkWidget * title;
-	GtkWidget * top_table;
-	GtkWidget * lbusregno, * tbusregno;
-	GtkWidget * lbusmodel, * tbusmodel;
-	GtkWidget * lbusdriver, * tbusdriver;
-	GtkWidget * lowner, * towner;
-	GtkWidget * ldate, * date_hbox, * tdate, * date_btn;
+#include <gtk/gtk.h>
 
-	GtkWidget * lpack;
-	GtkWidget * combopack;
-	GtkWidget * addpack;
-	GtkWidget * lcustompack;
-	GtkWidget * tcustompack, * sw;
-	GtkWidget * addcustompack;
 
-	GtkWidget * btn_hbox;
-	GtkWidget * ok, * clear, * cancel;
-	GtkWidget * list, * listbase;
-} mnt_ui;
+GtkWidget * window;
+GtkWidget * title;
+GtkWidget * vbox;
+GtkWidget * busframe;
+GtkWidget * bustable;
+GtkWidget * lname, * laddr, * lcity;
+GtkWidget * tname, * taddr, * tcity;
+GtkWidget * select_owner;
+GtkWidget * lcombo, * ldriver, * lmodel, * ldate;
+GtkWidget * select_bus, * tdriver, * tmodel, * tdate;
 
-mnt_ui * mntui;
+GtkWidget * pack_hbox;
+GtkWidget * packframe;
+GtkWidget * itemframe;
 
-mnt_ui * create_maintenance_window ();
+GtkWidget * packvbox, * itemvbox;
+GtkWidget * packselect, * packcustom, * packdelete, * tmphbox;
+GtkWidget * itemselect, * itemdelete;
+GtkWidget * packbase, * itembase;
+GtkWidget * packtv, * itemtv;
+GtkWidget * btnbase, * ok, * clear, * cancel;
 
+
+void create_maintenance_window ();
 #endif
