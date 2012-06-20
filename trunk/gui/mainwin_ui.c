@@ -18,6 +18,11 @@ void add_bus_clicked (GtkWidget * widget, gpointer data)
 	create_bus_reg_window ();
 }
 
+void add_bill_clicked (GtkWidget * widget, gpointer data)
+{
+	create_bill_window ();
+}
+
 void add_owner_clicked (GtkWidget * widget, gpointer data)
 {
 	create_owner_reg_window ();
@@ -242,6 +247,9 @@ void open_mainwindow ()
         G_CALLBACK(gtk_main_quit), NULL);
 	g_signal_connect(G_OBJECT(addmnt), "activate",
         G_CALLBACK(add_maintenance_clicked), NULL);
+
+        g_signal_connect(G_OBJECT(addfin), "activate",
+        G_CALLBACK(add_bill_clicked), NULL);
 
 	gtk_window_maximize (GTK_WINDOW(mainwin));
   	gtk_widget_show_all(mainwin);
