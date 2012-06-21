@@ -4,6 +4,8 @@
 GtkWidget * ow_name = NULL;
 GtkWidget * ow_addr = NULL;
 GtkWidget * ow_city = NULL;
+int * _id = NULL;
+void (*callback_ptr)() = NULL;
 
 static void add_data (GtkWidget * list, OWNER * owner)
 {
@@ -46,10 +48,13 @@ void item_double_clicked (GtkTreeView * view, GtkTreePath * path, GtkTreeViewCol
 			gtk_label_set_markup (GTK_LABEL(ow_name), selected_owner->owner_name);
 			gtk_label_set_markup (GTK_LABEL(ow_addr), selected_owner->address1);
 			gtk_label_set_markup (GTK_LABEL(ow_city), selected_owner->city1);
-			extern int selected_owner_id;
-			selected_owner_id = id;
+			//extern int selected_owner_id;
+			//selected_owner_id = id;
+			(*_id) = id;
 		}
     }
+	if (callback_ptr != NULL)
+		callback_ptr ();
 	gtk_widget_destroy (ow_search_ui->window);
 }
 
@@ -161,11 +166,13 @@ GtkWidget * create_view ()
     return list;
 }
 
-owner_search_ui * create_owner_search_window (GtkWidget * n, GtkWidget * a, GtkWidget * c)
+owner_search_ui * create_owner_search_window (GtkWidget * n, GtkWidget * a, GtkWidget * c, int * id, void (*callback)(void))
 {
 	ow_name = n;
 	ow_addr = a;
 	ow_city = c;
+	_id = id;
+	callback_ptr = callback;
     ow_search_ui = malloc (sizeof(owner_search_ui));
 
     ow_search_ui->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);

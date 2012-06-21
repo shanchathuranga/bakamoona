@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int selected_owner_id = -1;
+static int selected_owner_id = -1;
 
 static void show_error()
 {
@@ -29,7 +29,7 @@ static void clear_fields ()
 
 static void search_button_clicked (GtkWidget * widget, gpointer data)
 {
-	create_owner_search_window (bui->towner_name, bui->towner_address, bui->towner_city);
+	create_owner_search_window (bui->towner_name, bui->towner_address, bui->towner_city, &selected_owner_id, NULL);
 }
 
 static void clear_button_clicked (GtkWidget * widget, gpointer data)

@@ -1,4 +1,8 @@
 #include "maintenance_ui.h"
+#include "bus.h"
+#include <glib.h>
+
+static int selected_owner_id = 1;
 
 static void ok_button_clicked (GtkWidget * widget, gpointer data)
 {
@@ -6,6 +10,23 @@ static void ok_button_clicked (GtkWidget * widget, gpointer data)
 
 static void clear_button_clicked (GtkWidget * widget, gpointer data)
 {
+}
+
+static void populate_buses ()
+{
+	GSList * bus_list = get_bus_by_owner_id (selected_owner_id);
+	GSList * bus_iter;
+
+	for (bus_iter = bus_list; bus_iter; bus_iter = bus_iter->next)
+	{
+		BUS * bus = (BUS*)(bus_iter->data);
+		gtk_combo_box_append_text (GTK_COMBO_BOX(select_bus), bus->bus_reg_no);
+	}
+}
+
+static void select_owner_button_clicked (GtkWidget * widget, gpointer data)
+{
+	create_owner_search_window (tname, taddr, tcity, &selected_owner_id, &populate_buses);
 }
 
 static void cancel_button_clicked (GtkWidget * widget, gpointer data)
@@ -45,6 +66,14 @@ void create_maintenance_window ()
     lmodel = gtk_label_new ("Model : ");
     ldate = gtk_label_new ("Date : ");
 
+	gtk_misc_set_alignment (GTK_MISC (lname), 1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (laddr), 1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (lcity), 1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (lcombo), 1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (ldriver), 1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (lmodel), 1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (ldate), 1, 0.5);
+
     gtk_table_attach_defaults (GTK_TABLE(bustable), select_owner, 0, 2, 0, 1);
     gtk_table_attach_defaults (GTK_TABLE(bustable), lname, 0, 1, 1, 2);
     gtk_table_attach_defaults (GTK_TABLE(bustable), laddr, 0, 1, 2, 3);
@@ -55,9 +84,15 @@ void create_maintenance_window ()
     gtk_table_attach_defaults (GTK_TABLE(bustable), ldate, 2, 3, 3, 4);
 
     select_bus = gtk_combo_box_new_text ();
-    tname = gtk_entry_new ();
-    taddr = gtk_entry_new ();
-    tcity = gtk_entry_new ();
+    tname = gtk_label_new ("");
+    taddr = gtk_label_new ("");
+    tcity = gtk_label_new ("");
+	gtk_label_set_markup (GTK_LABEL(tname), "<i>--- Owner Name ---</i>");
+	gtk_label_set_markup (GTK_LABEL(taddr), "<i>--- Owner Address ---</i>"); 
+	gtk_label_set_markup (GTK_LABEL(tcity), "<i>--- Owner City ---</i>");
+	gtk_misc_set_alignment (GTK_MISC (tname), 0, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (taddr), 0, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (tcity), 0, 0.5);
     tdriver = gtk_entry_new ();
     tmodel = gtk_entry_new ();
     tdate = gtk_entry_new ();
@@ -122,6 +157,9 @@ void create_maintenance_window ()
 
 	g_signal_connect (G_OBJECT(cancel), "clicked",
 		G_CALLBACK(cancel_button_clicked), G_OBJECT(window));
+
+	g_signal_connect (G_OBJECT(select_owner), "clicked",
+		G_CALLBACK(select_owner_button_clicked), G_OBJECT(window));
 
 	gtk_window_set_modal (GTK_WINDOW(window), TRUE);
     
