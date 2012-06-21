@@ -4,6 +4,8 @@
 #include "worker_reg_ui.h"
 #include "sparepart_reg_ui.h"
 #include "maintenance_ui.h"
+#include "bill_ui.h"
+#include "package_ui.h"
 
 void add_bus_clicked (GtkWidget * widget, gpointer data)
 {
@@ -16,6 +18,11 @@ void add_bus_clicked (GtkWidget * widget, gpointer data)
         G_CALLBACK(gtk_widget_destroy), NULL);*/
 
 	create_bus_reg_window ();
+}
+
+void add_package_clicked (GtkWidget * widget, gpointer data)
+{
+	create_enter_package_window ();
 }
 
 void add_bill_clicked (GtkWidget * widget, gpointer data)
@@ -265,6 +272,9 @@ void open_mainwindow ()
 
         g_signal_connect(G_OBJECT(addfin), "activate",
         G_CALLBACK(add_bill_clicked), NULL);
+
+        g_signal_connect(G_OBJECT(addfin), "activate",
+        G_CALLBACK(add_package_clicked), NULL);
 
 	gtk_window_maximize (GTK_WINDOW(mainwin));
   	gtk_widget_show_all(mainwin);
