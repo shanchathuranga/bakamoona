@@ -33,6 +33,12 @@ GtkWidget * workermenu;
 GtkWidget * addworker;
 GtkWidget * updateworker;
 GtkWidget * deleteworker;
+// package
+GtkWidget * package_item;
+GtkWidget * packagemenu;
+GtkWidget * addpackage;
+GtkWidget * updatepackage;
+GtkWidget * deletepackage;
 
 GtkWidget * sep;
 GtkWidget * quit;
