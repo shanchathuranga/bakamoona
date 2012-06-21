@@ -142,6 +142,21 @@ void open_mainwindow ()
     gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), addworker);
     gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), updateworker);
     gtk_menu_shell_append (GTK_MENU_SHELL(workermenu), deleteworker);
+    
+    // adding packages
+    package_item = gtk_menu_item_new_with_label ("Package");
+    gtk_menu_shell_append (GTK_MENU_SHELL(sysmenu), package_item);
+
+    packagemenu = gtk_menu_new ();
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(package_item), packagemenu);
+
+    addpackage = gtk_menu_item_new_with_label ("Add Package");
+    updatepackage = gtk_menu_item_new_with_label ("Update Package");
+    deletepackage = gtk_menu_item_new_with_label ("Delete Package");
+
+    gtk_menu_shell_append (GTK_MENU_SHELL(packagemenu), addpackage);
+    gtk_menu_shell_append (GTK_MENU_SHELL(packagemenu), updatepackage);
+    gtk_menu_shell_append (GTK_MENU_SHELL(packagemenu), deletepackage);
 
 	sep = gtk_separator_menu_item_new();
     quit = gtk_menu_item_new_with_label("Quit");
