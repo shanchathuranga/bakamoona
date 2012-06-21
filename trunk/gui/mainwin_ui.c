@@ -273,7 +273,7 @@ void open_mainwindow ()
         g_signal_connect(G_OBJECT(addfin), "activate",
         G_CALLBACK(add_bill_clicked), NULL);
 
-        g_signal_connect(G_OBJECT(addfin), "activate",
+        g_signal_connect(G_OBJECT(addpackage), "activate",
         G_CALLBACK(add_package_clicked), NULL);
 
 	gtk_window_maximize (GTK_WINDOW(mainwin));
