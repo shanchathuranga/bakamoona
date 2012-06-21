@@ -18,50 +18,50 @@ void create_enter_package_window (){
         header_label = gtk_label_new("Enter Packages");
         gtk_box_pack_start(GTK_BOX(vbox), header_label, FALSE, FALSE, 0);//
 /////////
-        layout = gtk_table_new(5, 2, FALSE);//
+        layout = gtk_table_new(4, 2, FALSE);//
         gtk_table_set_row_spacings(GTK_TABLE(layout), 5);
  	gtk_table_set_col_spacings(GTK_TABLE(layout), 5);
 
-	package_reg_no_label = gtk_label_new("Package No : ");
-        package_reg_no_txt = gtk_entry_new(); 
+	package_code_label = gtk_label_new("Package Code : ");
+        package_code_txt = gtk_entry_new(); 
 
-        date_label = gtk_label_new("Date : ");
-        date_txt = gtk_entry_new(); 
+        //date_label = gtk_label_new("Date : ");
+        //date_txt = gtk_entry_new(); 
 
-        enetr_package_label = gtk_label_new("Enter Package : ");
-        enetr_package_txt = gtk_entry_new();
+        enetr_package_items_label = gtk_label_new("Enter Package Items : ");
+        enetr_package_items_txt = gtk_entry_new();
 
         package_discription_label = gtk_label_new("Package Discription : ");
         package_discription_txt = gtk_entry_new();
 
 
-        package_value_label = gtk_label_new("Package Value : ");
-        package_value_txt = gtk_entry_new(); 
+        package_price_label = gtk_label_new("Package Price : ");
+        package_price_txt = gtk_entry_new(); 
 
 
 
-gtk_misc_set_alignment (GTK_MISC (package_reg_no_label), 1, 0.5);
-gtk_misc_set_alignment (GTK_MISC (enetr_package_label), 1, 0.5);
+gtk_misc_set_alignment (GTK_MISC (package_code_label), 1, 0.5);
+gtk_misc_set_alignment (GTK_MISC (enetr_package_items_label), 1, 0.5);
 gtk_misc_set_alignment (GTK_MISC (package_discription_label), 1, 0.5);
-gtk_misc_set_alignment (GTK_MISC (package_value_label), 1, 0.5);
-gtk_misc_set_alignment (GTK_MISC (date_label), 1, 0.5);
+gtk_misc_set_alignment (GTK_MISC (package_price_label), 1, 0.5);
+//gtk_misc_set_alignment (GTK_MISC (date_label), 1, 0.5);
 
 
 
-gtk_table_attach (GTK_TABLE(layout), package_reg_no_label,0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-gtk_table_attach_defaults (GTK_TABLE(layout), package_reg_no_txt, 1, 2, 0, 1);
+gtk_table_attach (GTK_TABLE(layout), package_code_label,0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+gtk_table_attach_defaults (GTK_TABLE(layout), package_code_txt, 1, 2, 0, 1);
 
-gtk_table_attach (GTK_TABLE(layout), enetr_package_label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-gtk_table_attach_defaults (GTK_TABLE(layout), enetr_package_txt, 1, 2, 1, 2);
+gtk_table_attach (GTK_TABLE(layout), enetr_package_items_label, 0, 1, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+gtk_table_attach_defaults (GTK_TABLE(layout), enetr_package_items_txt, 1, 2, 1, 2);
 
 gtk_table_attach (GTK_TABLE(layout), package_discription_label, 0, 1, 2, 3, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
 gtk_table_attach_defaults (GTK_TABLE(layout), package_discription_txt, 1, 2, 2, 3);
 
-gtk_table_attach (GTK_TABLE(layout), package_value_label, 0, 1, 3, 4, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-gtk_table_attach_defaults (GTK_TABLE(layout), package_value_txt, 1, 2, 3, 4);
+gtk_table_attach (GTK_TABLE(layout), package_price_label, 0, 1, 3, 4, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+gtk_table_attach_defaults (GTK_TABLE(layout), package_price_txt, 1, 2, 3, 4);
 
-gtk_table_attach (GTK_TABLE(layout), date_label, 0, 1, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
-gtk_table_attach_defaults (GTK_TABLE(layout), date_txt, 1, 2, 4, 5);
+//gtk_table_attach (GTK_TABLE(layout), date_label, 0, 1, 4, 5, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+//gtk_table_attach_defaults (GTK_TABLE(layout), date_txt, 1, 2, 4, 5);
 
 
 

@@ -6,16 +6,16 @@
        GtkWidget * window;
        GtkWidget * header_label;
 
-       GtkWidget * package_reg_no_label;
-       GtkWidget * package_reg_no_txt;
-       GtkWidget * enetr_package_label;
-       GtkWidget * enetr_package_txt;
-       GtkWidget * package_value_label;
-       GtkWidget * package_value_txt;
+       GtkWidget * package_code_label;
+       GtkWidget * package_code_txt;
+       GtkWidget * enetr_package_items_label;
+       GtkWidget * enetr_package_items_txt;
+       GtkWidget * package_price_label;
+       GtkWidget * package_price_txt;
        GtkWidget * package_discription_label;
        GtkWidget * package_discription_txt;
-       GtkWidget * date_label;
-       GtkWidget * date_txt;
+       //GtkWidget * date_label;
+       //GtkWidget * date_txt;
        
        GtkWidget * clear_button;
        GtkWidget * ok_button;

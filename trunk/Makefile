@@ -13,7 +13,9 @@ SOURCES = 	./db/db.c \
       		./gui/worker_reg_ui.c \
 			./gui/owner_search_ui.c \
 			./gui/sparepart_reg_ui.c \
-			./gui/maintenance_ui.c
+			./gui/maintenance_ui.c\
+                        ./gui/bill_ui.c\
+                        ./gui/package_ui.c\
 
 .PHONY: all
 all:
