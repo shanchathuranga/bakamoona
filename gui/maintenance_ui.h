@@ -26,6 +26,7 @@ GtkWidget * packbase, * itembase;
 GtkWidget * packtv, * itemtv;
 GtkWidget * btnbase, * ok, * clear, * cancel;
 
+GtkWidget * pkg_list, * item_list;
 
 void create_maintenance_window ();
 #endif
