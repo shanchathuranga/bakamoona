@@ -1,12 +1,37 @@
 #include "sparepart_reg_ui.h"
+#include "sparepart.h"
 #include <stdlib.h>
+#include <string.h>
+
+static void clear_fields ()
+{
+	gtk_entry_set_text(GTK_ENTRY(spui->code_txt), "");
+	gtk_entry_set_text(GTK_ENTRY(spui->sp_name_txt), "");
+	gtk_entry_set_text(GTK_ENTRY(spui->unitcost_txt), "");
+	gtk_entry_set_text(GTK_ENTRY(spui->mincost_txt), "");
+	gtk_entry_set_text(GTK_ENTRY(spui->maxcost_txt), "");
+	gtk_entry_set_text(GTK_ENTRY(spui->desc_txt), "");
+}
 
 static void ok_button_clicked(GtkWidget * widget, gpointer data)
 {
+	SPAREPART * sp = malloc (sizeof(SPAREPART));
+
+	strcpy (sp->sp_code, gtk_entry_get_text(GTK_ENTRY(spui->code_txt)));
+	strcpy (sp->sp_name, gtk_entry_get_text(GTK_ENTRY(spui->sp_name_txt)));
+	sp->unit_cost = atof(gtk_entry_get_text(GTK_ENTRY(spui->unitcost_txt)));
+	sp->min_cost = atof(gtk_entry_get_text(GTK_ENTRY(spui->mincost_txt)));
+	sp->max_cost = atof(gtk_entry_get_text(GTK_ENTRY(spui->maxcost_txt)));
+	strcpy (sp->sp_desc, gtk_entry_get_text(GTK_ENTRY(spui->desc_txt)));
+
+	insert_sparepart (sp);
+
+	clear_fields ();
 }
 
 static void clear_button_clicked(GtkWidget * widget, gpointer data)
 {
+	clear_fields ();
 }
 
 static void cancel_button_clicked(GtkWidget * widget, gpointer data)

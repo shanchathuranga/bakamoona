@@ -12,6 +12,7 @@ void init_db ()
 	mysql_query (conn, BKM_QUERY_OWNER);
 	mysql_query (conn, BKM_QUERY_BUS);
 	mysql_query (conn, BKM_QUERY_UNREGISTEREDJOBDETAILS);
+	mysql_query (conn, BKM_QUERY_SPARE_PART);
 
 	mysql_close (conn);
 }
