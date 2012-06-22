@@ -39,6 +39,37 @@ static void cancel_button_clicked (GtkWidget * widget, gpointer data)
 	gtk_widget_destroy (window);
 }
 
+static void init_list(GtkWidget *list)
+{
+  	GtkCellRenderer *renderer;
+  	GtkTreeViewColumn *column;
+  	GtkListStore *store;
+
+  	renderer = gtk_cell_renderer_text_new();
+  	column = gtk_tree_view_column_new_with_attributes("List Items",
+    	renderer, "text", 0, NULL);
+  	gtk_tree_view_append_column(GTK_TREE_VIEW(list), column);
+
+  	store = gtk_list_store_new(1, G_TYPE_STRING);
+
+  	gtk_tree_view_set_model(GTK_TREE_VIEW(list), 
+      	GTK_TREE_MODEL(store));
+
+  	g_object_unref(store);
+}
+
+static void add_to_list(GtkWidget *list, const gchar *str)
+{
+  	GtkListStore *store;
+  	GtkTreeIter iter;
+
+  	store = GTK_LIST_STORE(gtk_tree_view_get_model
+      	(GTK_TREE_VIEW(list)));
+
+  	gtk_list_store_append(store, &iter);
+  	gtk_list_store_set(store, &iter, 0, str, -1);
+}
+
 void create_maintenance_window ()
 {
  	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -110,6 +141,13 @@ void create_maintenance_window ()
     gtk_table_attach_defaults (GTK_TABLE(bustable), tmodel, 3, 4, 2, 3);
     gtk_table_attach_defaults (GTK_TABLE(bustable), tdate, 3, 4, 3, 4);
 
+	pkg_list = gtk_tree_view_new();
+  	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(pkg_list), FALSE);
+	init_list(pkg_list);
+	item_list = gtk_tree_view_new();
+  	gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(item_list), FALSE);
+	init_list(item_list);
+
     pack_hbox = gtk_hbox_new (FALSE, 5);
     packframe = gtk_frame_new (" Packages ");
     itemframe = gtk_frame_new (" Spare Parts ");
@@ -122,7 +160,7 @@ void create_maintenance_window ()
     itemvbox = gtk_vbox_new (FALSE, 5);
     gtk_container_set_border_width(GTK_CONTAINER(itemvbox), 5);
     gtk_container_add(GTK_CONTAINER(packframe), packvbox);
-    gtk_container_add(GTK_CONTAINER(itemframe), itemvbox);
+    gtk_container_add(GTK_CONTAINER(itemframe), itemvbox);	
 
     packselect = gtk_button_new_with_label ("Select");
     packcustom = gtk_button_new_with_label ("Custom");
@@ -131,11 +169,13 @@ void create_maintenance_window ()
     gtk_box_pack_end (GTK_BOX(tmphbox), packcustom, TRUE, TRUE, 0);
     packdelete = gtk_button_new_with_label ("Delete");
     gtk_box_pack_start (GTK_BOX(packvbox), tmphbox, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX(packvbox), pkg_list, TRUE, TRUE, 0);
     gtk_box_pack_end (GTK_BOX(packvbox), packdelete, FALSE, FALSE, 0);
 
     itemselect = gtk_button_new_with_label ("Select");
     itemdelete = gtk_button_new_with_label ("Delete");
     gtk_box_pack_start (GTK_BOX(itemvbox), itemselect, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX(itemvbox), item_list, TRUE, TRUE, 0);
     gtk_box_pack_end (GTK_BOX(itemvbox), itemdelete, FALSE, FALSE, 0);
 
     btnbase = gtk_hbox_new (FALSE, 5);
