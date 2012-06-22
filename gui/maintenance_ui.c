@@ -14,6 +14,9 @@ static void clear_button_clicked (GtkWidget * widget, gpointer data)
 
 static void populate_buses ()
 {
+	GtkTreeModel *store = gtk_combo_box_get_model( GTK_COMBO_BOX(select_bus) );
+	gtk_list_store_clear( GTK_LIST_STORE( store ) );
+
 	GSList * bus_list = get_bus_by_owner_id (selected_owner_id);
 	GSList * bus_iter;
 
@@ -22,6 +25,8 @@ static void populate_buses ()
 		BUS * bus = (BUS*)(bus_iter->data);
 		gtk_combo_box_append_text (GTK_COMBO_BOX(select_bus), bus->bus_reg_no);
 	}
+	
+	gtk_combo_box_set_active (GTK_COMBO_BOX(select_bus), 0);
 }
 
 static void select_owner_button_clicked (GtkWidget * widget, gpointer data)
