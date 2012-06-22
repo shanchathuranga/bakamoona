@@ -7,15 +7,16 @@ CFLAGS = -I./db -I./gui
 SOURCES = 	./db/db.c \
 			./db/bus.c \
 			./db/owner.c \
+			./db/sparepart.c \
 			./gui/mainwin_ui.c \
       		./gui/owner_reg_ui.c \
 			./gui/bus_reg_ui.c \
       		./gui/worker_reg_ui.c \
 			./gui/owner_search_ui.c \
 			./gui/sparepart_reg_ui.c \
-			./gui/maintenance_ui.c\
-                        ./gui/bill_ui.c\
-                        ./gui/package_ui.c\
+			./gui/maintenance_ui.c \
+            ./gui/bill_ui.c \
+            ./gui/package_ui.c
 
 .PHONY: all
 all:

@@ -41,6 +41,18 @@
   	PRIMARY KEY (owner_id) \
 );"
 
+#define BKM_QUERY_SPARE_PART "CREATE TABLE IF NOT EXISTS SparePart ( \
+	sp_id INT NOT NULL AUTO_INCREMENT, \
+	sp_code VARCHAR (32), \
+	sp_name VARCHAR (255), \
+	unit_cost FLOAT (10,2), \
+	min_cost FLOAT (10,2), \
+	max_cost FLOAT (10,2), \
+	sp_desc VARCHAR (255), \
+	ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, \
+	PRIMARY KEY (sp_id) \
+);"
+
 #define BKM_QUERY_UNREGISTEREDJOBDETAILS "CREATE TABLE IF NOT EXISTS UnregistredJobDetails ( \
 	unreg_jobdetail_id INT NOT NULL AUTO_INCREMENT, \
 	bus_reg_no VARCHAR (8), \
