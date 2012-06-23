@@ -14,8 +14,11 @@
        GtkWidget * package_price_txt;
        GtkWidget * package_discription_label;
        GtkWidget * package_discription_txt;
-       //GtkWidget * date_label;
-       //GtkWidget * date_txt;
+       GtkWidget * itemframe;
+       GtkWidget * pkghbox;
+		GtkWidget * btnvbox;
+		GtkWidget * pkglist, * sw;
+		GtkWidget * add_sp, * add_custom, * delete_item;
        
        GtkWidget * clear_button;
        GtkWidget * ok_button;
